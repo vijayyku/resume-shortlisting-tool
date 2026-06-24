@@ -4,7 +4,7 @@ from PyPDF2 import PdfReader
 import numpy as np
 import re
 
-st.title("AI Resume Shortlisting Tool (ATS Version)")
+st.title("AI Resume Shortlisting Tool (Advanced ATS)")
 
 # --- Extract Text ---
 def extract_text(file):
@@ -15,20 +15,29 @@ def extract_text(file):
             text += page.extract_text()
     return text.lower()
 
-# --- Extract Skills ---
+# --- Dynamic Skill Extraction ---
 def extract_skills(jd_text):
-    skills_list = [
-        "python", "c", "cpp", "embedded", "autosar", "ecu",
-        "can", "lin", "matlab", "simulink", "linux",
-        "testing", "debugging", "communication"
-    ]
+    words = re.findall(r'\b[a-zA-Z]{3,}\b', jd_text.lower())
 
-    found_skills = []
-    for skill in skills_list:
-        if re.search(rf"\\b{skill}\\b", jd_text):
-            found_skills.append(skill)
+    stopwords = set([
+        "the", "and", "with", "for", "you", "are", "this", "that",
+        "will", "have", "has", "from", "our", "your", "job",
+        "role", "work", "team", "experience", "years", "required",
+        "good", "strong", "knowledge", "skills", "ability"
+    ])
 
-    return found_skills
+    filtered_words = [w for w in words if w not in stopwords]
+
+    freq = {}
+    for word in filtered_words:
+        freq[word] = freq.get(word, 0) + 1
+
+    sorted_words = sorted(freq.items(), key=lambda x: x[1], reverse=True)
+
+    # Top 15 keywords as skills
+    skills = [word for word, count in sorted_words[:15]]
+
+    return skills
 
 # --- Match Skills ---
 def match_skills(jd_skills, resume_text):
@@ -38,7 +47,7 @@ def match_skills(jd_skills, resume_text):
 def missing_skills(jd_skills, matched):
     return list(set(jd_skills) - set(matched))
 
-# --- Skill Match Percentage ---
+# --- Skill Match % ---
 def skill_match_percent(jd_skills, matched):
     if len(jd_skills) == 0:
         return 0
@@ -48,8 +57,8 @@ def skill_match_percent(jd_skills, matched):
 def highlight_skills(text, skills):
     for skill in skills:
         text = re.sub(
-            rf"\\b({skill})\\b",
-            r"**\\1**",
+            rf"\b({skill})\b",
+            r"**\1**",
             text,
             flags=re.IGNORECASE
         )
@@ -72,6 +81,17 @@ def compute_similarity(v1, v2):
 
     return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
+# --- Profile Evaluation ---
+def evaluate_profile(score, skill_percent, missing):
+    overall_score = (score * 100 * 0.4) + (skill_percent * 0.6)
+
+    if overall_score >= 75 and len(missing) <= 2:
+        return "✅ Strong Match", overall_score
+    elif overall_score >= 50:
+        return "⚠️ Moderate Match", overall_score
+    else:
+        return "❌ Low Match", overall_score
+
 # --- UI ---
 jd = st.text_area("Paste Job Description")
 files = st.file_uploader("Upload Resumes (PDF)", accept_multiple_files=True)
@@ -82,10 +102,10 @@ if st.button("Analyze"):
     else:
         jd_text = jd.lower()
 
-        # Extract JD skills
+        # Extract skills dynamically
         jd_skills = extract_skills(jd_text)
 
-        st.subheader("Skills Identified from JD")
+        st.subheader("Extracted Skills from JD")
         st.write(jd_skills if jd_skills else "No skills detected")
 
         jd_vec = simple_embedding(jd_text)
@@ -99,30 +119,39 @@ if st.button("Analyze"):
             res_vec = simple_embedding(resume_text)
             score = compute_similarity(jd_vec, res_vec)
 
-            # skills
+            # skill analysis
             matched = match_skills(jd_skills, resume_text)
             missing = missing_skills(jd_skills, matched)
             skill_percent = skill_match_percent(jd_skills, matched)
 
-            results.append((f.name, score, matched, missing, skill_percent, resume_text))
+            # evaluation
+            label, overall_score = evaluate_profile(score, skill_percent, missing)
 
-        results = sorted(results, key=lambda x: x[1], reverse=True)
+            results.append((
+                f.name, score, skill_percent,
+                matched, missing, label,
+                overall_score, resume_text
+            ))
 
-        st.subheader("Candidate Results")
+        # sort by best candidates
+        results = sorted(results, key=lambda x: x[6], reverse=True)
 
-        for name, score, matched, missing, skill_percent, resume_text in results:
+        st.subheader("Candidate Evaluation")
+
+        for name, score, skill_percent, matched, missing, label, overall_score, resume_text in results:
             st.write(f"## {name}")
-            st.write(f"🔹 Overall Match Score: {round(score*100, 2)}%")
+            st.write(f"🏁 Final Verdict: {label}")
+            st.write(f"📊 Overall Score: {round(overall_score, 2)}%")
+            st.write(f"🔹 Similarity Score: {round(score*100, 2)}%")
             st.write(f"✅ Skill Match: {round(skill_percent, 2)}%")
 
             st.write("🟢 Matched Skills:", matched if matched else "None")
             st.write("🔴 Missing Skills:", missing if missing else "None")
 
-            # Highlight skills
-            highlighted_text = highlight_skills(resume_text[:1000], matched)
+            highlighted = highlight_skills(resume_text[:1000], matched)
 
-            st.write("📄 Resume Preview (Highlighted Skills)")
-            st.markdown(highlighted_text)
+            st.write("📄 Resume Preview (Highlighted)")
+            st.markdown(highlighted)
 
             st.write("---")
 
