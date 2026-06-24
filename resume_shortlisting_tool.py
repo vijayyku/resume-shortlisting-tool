@@ -49,6 +49,12 @@ def highlight(text, skills):
 def extract_skills(text):
     text = re.sub(r'[^a-zA-Z0-9\s/]', ' ', text.lower())
     found = set()
+    SKILL_LOOKUP = build_skill_lookup()
+    for term in SKILL_LOOKUP:
+        if re.search(r'\b' + re.escape(term) + r'\b', text):
+            found.add(SKILL_LOOKUP[term])
+
+    return list(found)
 # =========================
 # 📅 Extract Experience
 # =========================
@@ -262,16 +268,6 @@ def build_skill_lookup():
             lookup[base.replace(" ", "")] = base
 
     return lookup
-
-SKILL_LOOKUP = build_skill_lookup()
-
-
-
-    for term in SKILL_LOOKUP:
-        if re.search(r'\b' + re.escape(term) + r'\b', text):
-            found.add(SKILL_LOOKUP[term])
-
-    return list(found)
 
 # =========================
 # 🧩 Section Extraction
