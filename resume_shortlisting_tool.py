@@ -40,6 +40,10 @@ def highlight(text, skills):
 # =========================
 # 🖥 UI
 # =========================
+
+st.set_page_config(page_title="Enterprise ATS AI", layout="wide")
+st.title("🏢 Enterprise AI Resume Screening System")
+
 jd = st.text_area("📌 Job Description", height=200)
 files = st.file_uploader("📂 Upload Resumes", accept_multiple_files=True)
 
@@ -108,9 +112,6 @@ import pandas as pd
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
-st.set_page_config(page_title="Enterprise ATS AI", layout="wide")
-st.title("🏢 Enterprise AI Resume Screening System")
 
 # =========================
 # 📄 Extract PDF Text
