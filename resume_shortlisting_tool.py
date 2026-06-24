@@ -41,7 +41,7 @@ DOMAIN_SKILLS = [
     "git", "jenkins", "ci/cd",
 
     # Cloud
-    "aws", "azure",
+    "aws", "azure", "dell boomi",
 
     # OS
     "linux", "unix", "shell scripting",
