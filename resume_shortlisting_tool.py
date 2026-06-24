@@ -56,38 +56,13 @@ DOMAIN_SKILLS = [
 # =========================
 # 📄 Extract PDF
 # =========================
-#def extract_text(file):
- #   reader = PdfReader(file)
-  #  text = ""
-   # for page in reader.pages:
-    #    if page.extract_text():
-     #       text += page.extract_text()
-    # return text.lower()
-
-def extract_skills(text):
-    # ✅ Clean + normalize text
-    text = text.lower()
-    text = re.sub(r'[^a-zA-Z0-9\s/+.#-]', ' ', text)
-    text = re.sub(r'\s+', ' ', text)
-
-    found = set()
-    SKILL_LOOKUP = build_skill_lookup()
-
-    # ✅ Sort skills by length (IMPORTANT: match long phrases first)
-    sorted_terms = sorted(SKILL_LOOKUP.keys(), key=len, reverse=True)
-
-    for term in sorted_terms:
-        pattern = r'\b' + re.escape(term) + r'\b'
-
-        if re.search(pattern, text):
-            found.add(SKILL_LOOKUP[term])
-
-            # ✅ OPTIONAL: Remove matched term to avoid duplicate/overlap detection
-            text = re.sub(pattern, ' ', text)
-
-    # ✅ Return clean sorted list
-    return sorted(found)
-
+def extract_text(file):
+    reader = PdfReader(file)
+    text = ""
+    for page in reader.pages:
+        if page.extract_text():
+            text += page.extract_text()
+     return text.lower()
 
 # =========================
 # ✅ BUILD SKILL DB FROM JD
