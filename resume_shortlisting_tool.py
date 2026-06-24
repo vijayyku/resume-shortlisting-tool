@@ -13,7 +13,7 @@ st.title("🏢 Enterprise ATS - JD Driven Skill Matching")
 # =========================
 DOMAIN_SKILLS = [
     # Core Programming
-    "java", "j2ee", "spring boot", "jdbc", "sql",
+    "java", "j2ee", "spring boot", "jdbc", "sql", "rest",
 
     # Integration / Middleware
     "ibm sterling b2b integrator", "axway b2bi",
