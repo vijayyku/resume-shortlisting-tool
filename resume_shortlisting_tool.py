@@ -60,8 +60,11 @@ def extract_text(file):
     reader = PdfReader(file)
     text = ""
     for page in reader.pages:
-        if page.extract_text():
-            text += page.extract_text()
+        
+content = page.extract_text()
+        if content:
+            text += content
+
      return text.lower()
 
 # =========================
