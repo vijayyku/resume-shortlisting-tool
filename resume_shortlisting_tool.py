@@ -1,157 +1,202 @@
-
 import streamlit as st
 from PyPDF2 import PdfReader
+import pandas as pd
 import numpy as np
 import re
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 
-st.title("AI Resume Shortlisting Tool (Advanced ATS)")
+st.set_page_config(page_title="Enterprise ATS AI", layout="wide")
+st.title("🏢 Enterprise AI Resume Screening System")
 
-# --- Extract Text ---
+# =========================
+# 📄 Extract PDF Text
+# =========================
 def extract_text(file):
     reader = PdfReader(file)
     text = ""
     for page in reader.pages:
-        if page.extract_text():
-            text += page.extract_text()
+        content = page.extract_text()
+        if content:
+            text += content
     return text.lower()
 
-# --- Dynamic Skill Extraction ---
-def extract_skills(jd_text):
-    words = re.findall(r'\b[a-zA-Z]{3,}\b', jd_text.lower())
+# =========================
+# 🧠 Skill DB + Synonyms
+# =========================
+SKILL_DB = {
+    "python": ["python"],
+    "machine learning": ["machine learning", "ml"],
+    "data science": ["data science"],
+    "sql": ["sql"],
+    "aws": ["aws", "amazon web services"],
+    "docker": ["docker"],
+    "kubernetes": ["kubernetes", "k8s"],
+    "power bi": ["power bi"],
+    "tableau": ["tableau"],
+    "excel": ["excel"],
+    "tensorflow": ["tensorflow"],
+    "pytorch": ["pytorch"],
+    "react": ["react"],
+    "node.js": ["node", "nodejs"]
+}
 
-    stopwords = set([
-        "the", "and", "with", "for", "you", "are", "this", "that",
-        "will", "have", "has", "from", "our", "your", "job",
-        "role", "work", "team", "experience", "years", "required",
-        "good", "strong", "knowledge", "skills", "ability"
-    ])
+# =========================
+# 🔍 Extract Skills
+# =========================
+def extract_skills(text):
+    text = re.sub(r'[^a-zA-Z0-9\s]', ' ', text.lower())
+    skills = []
 
-    filtered_words = [w for w in words if w not in stopwords]
+    for skill, variants in SKILL_DB.items():
+        for v in variants:
+            if re.search(r'\b' + re.escape(v) + r'\b', text):
+                skills.append(skill)
+                break
 
-    freq = {}
-    for word in filtered_words:
-        freq[word] = freq.get(word, 0) + 1
+    return list(set(skills))
 
-    sorted_words = sorted(freq.items(), key=lambda x: x[1], reverse=True)
+# =========================
+# 📅 Experience Extraction
+# =========================
+def extract_experience(text):
+    matches = re.findall(r'(\d+)\+?\s*(years|yrs)', text)
+    if matches:
+        return max([int(m[0]) for m in matches])
+    return 0
 
-    # Top 15 keywords as skills
-    skills = [word for word, count in sorted_words[:15]]
+# =========================
+# 🧩 Resume Section Detection
+# =========================
+def extract_sections(text):
+    sections = {}
 
-    return skills
+    patterns = {
+        "projects": r'projects(.+?)(education|skills|experience|$)',
+        "experience": r'experience(.+?)(education|skills|projects|$)',
+        "skills": r'skills(.+?)(experience|education|projects|$)'
+    }
 
-# --- Match Skills ---
-def match_skills(jd_skills, resume_text):
-    return [skill for skill in jd_skills if skill in resume_text]
+    for key, pattern in patterns.items():
+        match = re.search(pattern, text, re.DOTALL)
+        sections[key] = match.group(1) if match else ""
 
-# --- Missing Skills ---
-def missing_skills(jd_skills, matched):
-    return list(set(jd_skills) - set(matched))
+    return sections
 
-# --- Skill Match % ---
-def skill_match_percent(jd_skills, matched):
-    if len(jd_skills) == 0:
-        return 0
-    return (len(matched) / len(jd_skills)) * 100
+# =========================
+# 🎯 Semantic Similarity
+# =========================
+def compute_similarity(jd, resume):
+    vectorizer = TfidfVectorizer(stop_words="english")
+    vectors = vectorizer.fit_transform([jd, resume])
+    return cosine_similarity(vectors[0:1], vectors[1:2])[0][0]
 
-# --- Highlight Skills ---
-def highlight_skills(text, skills):
-    for skill in skills:
-        text = re.sub(
-            rf"\b({skill})\b",
-            r"**\1**",
-            text,
-            flags=re.IGNORECASE
-        )
+# =========================
+# ✅ Skill Matching
+# =========================
+def match_skills(jd, resume):
+    matched = list(set(jd) & set(resume))
+    missing = list(set(jd) - set(resume))
+    percent = (len(matched)/len(jd)*100) if jd else 0
+    return matched, missing, percent
+
+# =========================
+# 🏆 Enterprise Scoring
+# =========================
+def evaluate(sim, skill_pct, exp_jd, exp_res, project_weight):
+    exp_score = min(exp_res/exp_jd, 1)*100 if exp_jd else 50
+
+    final = (
+        sim * 100 * 0.35 +
+        skill_pct * 0.35 +
+        exp_score * 0.2 +
+        project_weight * 0.1
+    )
+
+    if final >= 80:
+        label = "✅ Strong Hire"
+    elif final >= 60:
+        label = "⚠️ Consider"
+    else:
+        label = "❌ Reject"
+
+    return label, final
+
+# =========================
+# 📊 Highlight Skills
+# =========================
+def highlight(text, skills):
+    for s in skills:
+        text = re.sub(rf"\b({re.escape(s)})\b", r"**\1**", text, flags=re.IGNORECASE)
     return text
 
-# --- Embedding ---
-def simple_embedding(text):
-    words = text.split()
-    vocab = list(set(words))
-    vector = [words.count(w) for w in vocab]
-    return np.array(vector)
+# =========================
+# 🖥 UI
+# =========================
+jd = st.text_area("📌 Job Description", height=200)
+files = st.file_uploader("📂 Upload Resumes", accept_multiple_files=True)
 
-# --- Similarity ---
-def compute_similarity(v1, v2):
-    min_len = min(len(v1), len(v2))
-    v1, v2 = v1[:min_len], v2[:min_len]
-
-    if np.linalg.norm(v1) == 0 or np.linalg.norm(v2) == 0:
-        return 0
-
-    return np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
-
-# --- Profile Evaluation ---
-def evaluate_profile(score, skill_percent, missing):
-    overall_score = (score * 100 * 0.4) + (skill_percent * 0.6)
-
-    if overall_score >= 75 and len(missing) <= 2:
-        return "✅ Strong Match", overall_score
-    elif overall_score >= 50:
-        return "⚠️ Moderate Match", overall_score
-    else:
-        return "❌ Low Match", overall_score
-
-# --- UI ---
-jd = st.text_area("Paste Job Description")
-files = st.file_uploader("Upload Resumes (PDF)", accept_multiple_files=True)
-
-if st.button("Analyze"):
+if st.button("🚀 Run ATS AI"):
     if not jd or not files:
-        st.warning("Please provide JD and upload resumes")
+        st.warning("Provide JD + resumes")
     else:
         jd_text = jd.lower()
 
-        # Extract skills dynamically
         jd_skills = extract_skills(jd_text)
+        jd_exp = extract_experience(jd_text)
 
-        st.subheader("Extracted Skills from JD")
-        st.write(jd_skills if jd_skills else "No skills detected")
-
-        jd_vec = simple_embedding(jd_text)
+        st.subheader("📊 JD Analysis")
+        st.write("Skills:", jd_skills)
+        st.write("Experience:", jd_exp, "years")
 
         results = []
 
         for f in files:
-            resume_text = extract_text(f)
+            text = extract_text(f)
 
-            # similarity
-            res_vec = simple_embedding(resume_text)
-            score = compute_similarity(jd_vec, res_vec)
+            res_skills = extract_skills(text)
+            res_exp = extract_experience(text)
 
-            # skill analysis
-            matched = match_skills(jd_skills, resume_text)
-            missing = missing_skills(jd_skills, matched)
-            skill_percent = skill_match_percent(jd_skills, matched)
+            sections = extract_sections(text)
+            projects_len = len(sections["projects"])
 
-            # evaluation
-            label, overall_score = evaluate_profile(score, skill_percent, missing)
+            project_score = min(projects_len / 500, 1) * 100
 
-            results.append((
-                f.name, score, skill_percent,
-                matched, missing, label,
-                overall_score, resume_text
-            ))
+            sim = compute_similarity(jd_text, text)
 
-        # sort by best candidates
-        results = sorted(results, key=lambda x: x[6], reverse=True)
+            matched, missing, skill_pct = match_skills(jd_skills, res_skills)
 
-        st.subheader("Candidate Evaluation")
+            verdict, final_score = evaluate(sim, skill_pct, jd_exp, res_exp, project_score)
 
-        for name, score, skill_percent, matched, missing, label, overall_score, resume_text in results:
-            st.write(f"## {name}")
-            st.write(f"🏁 Final Verdict: {label}")
-            st.write(f"📊 Overall Score: {round(overall_score, 2)}%")
-            st.write(f"🔹 Similarity Score: {round(score*100, 2)}%")
-            st.write(f"✅ Skill Match: {round(skill_percent, 2)}%")
+            results.append({
+                "Name": f.name,
+                "Score": round(final_score,2),
+                "Verdict": verdict,
+                "Similarity": round(sim*100,2),
+                "Skill %": round(skill_pct,2),
+                "Experience": res_exp,
+                "Matched Skills": ", ".join(matched),
+                "Missing Skills": ", ".join(missing)
+            })
 
-            st.write("🟢 Matched Skills:", matched if matched else "None")
-            st.write("🔴 Missing Skills:", missing if missing else "None")
+        df = pd.DataFrame(results)
+        df = df.sort_values(by="Score", ascending=False)
 
-            highlighted = highlight_skills(resume_text[:1000], matched)
+        st.subheader("🏆 Candidate Ranking")
+        st.dataframe(df)
 
-            st.write("📄 Resume Preview (Highlighted)")
-            st.markdown(highlighted)
+        # ✅ Export
+        csv = df.to_csv(index=False).encode('utf-8')
+        st.download_button("📥 Download Report", csv, "ATS_Report.csv", "text/csv")
 
+        # ✅ Detailed View
+        st.subheader("🔍 Candidate Details")
+        for r in results:
+            st.markdown(f"### 👤 {r['Name']}")
+            st.write(f"🏁 {r['Verdict']}")
+            st.write(f"📊 Score: {r['Score']}%")
+            st.write(f"✅ Skills: {r['Matched Skills']}")
+            st.write(f"❌ Missing: {r['Missing Skills']}")
             st.write("---")
+
 
