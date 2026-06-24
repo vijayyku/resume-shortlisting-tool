@@ -287,3 +287,7 @@ def extract_sections(text):
 def compute_similarity(jd, resume):
     vectorizer = TfidfVectorizer(stop_words="english")
     vectors = vectorizer.fit_transform([jd, resume])
+    
+    similarity = cosine_similarity(vectors[0:1], vectors[1:2])[0][0]
+    
+    return similarity
