@@ -57,16 +57,13 @@ DOMAIN_SKILLS = [
 # 📄 Extract PDF
 # =========================
 def extract_text(file):
+   
     reader = PdfReader(file)
     text = ""
     for page in reader.pages:
-        
-content = page.extract_text()
-        if content:
-            text += content
-
-     return text.lower()
-
+        if page.extract_text():
+            text += page.extract_text()
+    return text.lower()
 # =========================
 # ✅ BUILD SKILL DB FROM JD
 # =========================
