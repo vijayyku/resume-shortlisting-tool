@@ -271,7 +271,7 @@ if st.button("🚀 Run ATS"):
 
         results = []
 
-        for f in files:
+        for i, f in files:
             resume_text = extract_text(f)
 
             # ✅ Step 2: Match skills
@@ -287,6 +287,7 @@ if st.button("🚀 Run ATS"):
             score = evaluate(sim, skill_pct, jd_exp, res_exp)
 
             results.append({
+                "S.No": i,
                 "Name": f.name,
                 "Score": score,
                 "Skill Match %": round(skill_pct, 2),
