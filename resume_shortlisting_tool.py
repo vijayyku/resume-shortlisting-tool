@@ -63,6 +63,8 @@ def extract_text(file):
     for page in reader.pages:
         if page.extract_text():
             text += page.extract_text()
+    # ✅ Print the detected skills before validation/return
+    print("Skills extracted from JD:", text.lower())
     return text.lower()
 # =========================
 # ✅ BUILD SKILL DB FROM JD
@@ -74,11 +76,7 @@ def build_skill_database(jd_text):
 
     for skill in DOMAIN_SKILLS:
         if re.search(r'\b' + re.escape(skill) + r'\b', jd_text):
-            detected.add(skill)
-    
-    # ✅ Print the detected skills before validation/return
-    print("Skills extracted from JD:", list(detected))
-
+            detected.add(skill) 
     return list(detected)
 
 # =========================
