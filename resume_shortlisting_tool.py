@@ -271,7 +271,9 @@ if st.button("🚀 Run ATS"):
 
         results = []
 
-        for i, f in enumerate(files, start=1):
+        i=1
+        
+        for f in files:
             resume_text = extract_text(f)
 
             # ✅ Step 2: Match skills
@@ -295,6 +297,7 @@ if st.button("🚀 Run ATS"):
                 "Experience": res_exp,
                 "Matched Skills": ", ".join(matched),
                 "Missing Skills": ", ".join(missing),
+        i+=1
             })
 
         df = pd.DataFrame(results).sort_values(by="Score", ascending=False)
