@@ -71,8 +71,6 @@ def build_skill_database(jd_text):
     jd_text = re.sub(r'[^a-zA-Z0-9\s]', ' ', jd_text.lower())
 
     detected = set()
-    # ✅ Print the detected skills before validation/return
-    print("Skills extracted from JD:", detected)
     for skill in DOMAIN_SKILLS:
         if re.search(r'\b' + re.escape(skill) + r'\b', jd_text):
             detected.add(skill) 
@@ -136,7 +134,8 @@ if st.button("🚀 Run ATS"):
         st.warning("Provide JD and resumes")
     else:
         jd_text = jd.lower()
-
+        # ✅ Print the detected skills before validation/return
+        print("Skills extracted from JD:", jd_text) 
         # ✅ Step 1: Build Skill DB from JD
         jd_skill_db = build_skill_database(jd_text)
         jd_exp = extract_experience(jd_text)
