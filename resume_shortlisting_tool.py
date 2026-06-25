@@ -299,7 +299,7 @@ if st.button("🚀 Run ATS"):
         df = pd.DataFrame(results).sort_values(by="Score", ascending=False)
 
         st.subheader("🏆 Ranking")
-        st.dataframe(df)
+        st.dataframe(df, hide_index=True)
 
         # Download
         csv = df.to_csv(index=False).encode("utf-8")
