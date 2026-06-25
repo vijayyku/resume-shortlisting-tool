@@ -70,7 +70,7 @@ DOMAIN_SKILLS = [
 # =========================
 
 # Finance
-"sap fico", "sap finance", "general ledger", "accounts payable",
+"sap fico", "sap fica", "sap finance", "general ledger", "accounts payable",
 "accounts receivable", "fixed assets", "cost accounting",
 "financial accounting", "taxation", "treasury",
 
