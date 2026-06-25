@@ -251,8 +251,22 @@ DOMAIN_SKILLS = [
 # =========================
 "stakeholder management", "requirement gathering",
 "functional consulting", "solution design",
-"change management", "client communication"
+"change management", "client communication",
 
+# SAP Utilities & Revenue Management
+"SAP IS-U", "SAP S/4HANA Utilities",
+"SAP BRIM (Billing and Revenue Innovation Management)",
+
+# Core Financials (FI-CA)
+"contract accounting (fi-ca)", "accounts receivable",
+"dunning", "collections management", "credit management",
+"dispute management", "cash application", "payment processing",
+
+# Billing & Invoicing
+"billing", "invoicing", "rate determination",
+"tariff configuration", "bill simulation",
+"convergent invoicing (ci)", "invoice processing"
+    
 ]
 
 # =========================
