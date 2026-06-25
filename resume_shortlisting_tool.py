@@ -254,7 +254,7 @@ DOMAIN_SKILLS = [
 "change management", "client communication",
 
 # SAP Utilities & Revenue Management
-"SAP IS-U", "SAP S/4HANA Utilities",
+"SAP IS-U", "SAP S/4HANA Utilities", "SAPS/4HANA",
 "SAP BRIM (Billing and Revenue Innovation Management)",
 
 # Core Financials (FI-CA)
