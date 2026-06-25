@@ -78,7 +78,7 @@ DOMAIN_SKILLS = [
 
    "jest", "mocha", "chai", "junit", "testng",
 
-   "bdd", "cucumber", "gherkin",
+   "bdd", "cucumber", "gherkin", "pytest", testng",
 
    "test case design", "test execution", "defect tracking",
 
