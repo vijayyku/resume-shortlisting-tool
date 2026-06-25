@@ -14,20 +14,81 @@ st.title("🏢 Enterprise ATS - JD Driven Skill Matching")
 DOMAIN_SKILLS = [
     # Core Programming
     "java", "j2ee", "spring boot", "jdbc", "sql", "rest",
-
+    "python", "c", "c++", "c#", "javascript", "typescript",
+    "go", "rust", "kotlin", "scala", "swift",
+    "php", "ruby", "dart", "r", "matlab",
+   
     # Integration / Middleware
     "ibm sterling b2b integrator", "axway b2bi",
     "mulesoft", "dell boomi", "tibco",
     "b2b integrations", "edi workflows",
+    
+   "ibm sterling b2b integrator", "axway b2bi",
+   "mulesoft", "dell boomi", "tibco", "webmethods",
+   "oracle soa suite", "sap pi/po", "snaplogic",
 
+   "b2b integrations", "edi workflows", "edi mapping",
+   "x12", "edifact", "tradacoms", "xml", "json",
+
+    "enterprise service bus", "event-driven architecture",
+   "message queues", "kafka", "rabbitmq", "activemq", "ibm mq",
+
+   "data transformation", "data mapping", "schema validation",
+   "integration patterns", "api management", "api gateway",
+
+   "microservices integration", "cloud integration",
+   "hybrid integration platforms", "ipaas",
+    
     # EDI Standards
     "edi", "x12", "edifact", "itx",
     "ibm transformation extender", "map editor",
+    
+   # Web Development
+   "html", "css", "javascript", "typescript",
+   "react", "angular", "vue.js", "next.js",
+   "bootstrap", "tailwind css", "material ui",
+   "jquery", "ajax", "dom manipulation",
 
+   "node.js", "express.js", "spring mvc", "spring web",
+   "restful apis", "graphql", "web services",
+   "json", "xml",
+
+   "frontend development", "backend development", "full stack development",
+   "responsive design", "cross-browser compatibility",
+
+   "web security", "cors", "xss", "csrf",
+   "session management", "cookies",
+
+   "webpack", "vite", "babel",
+   "npm", "yarn",
+
+   "api integration", "third-party integrations",
+   "seo basics", "performance optimization",
+
+   # Web Testing
+   "selenium", "cypress", "playwright", "puppeteer",
+   "manual testing", "automation testing", "functional testing",
+   "regression testing", "smoke testing", "sanity testing",
+
+   "ui testing", "frontend testing", "cross-browser testing",
+   "cross-device testing",
+
+   "api testing", "postman", "rest assured", "soap ui",
+   "unit testing", "integration testing", "end-to-end testing",
+
+   "jest", "mocha", "chai", "junit", "testng",
+
+   "bdd", "cucumber", "gherkin",
+
+   "test case design", "test execution", "defect tracking",
+
+   "performance testing", "load testing", "jmeter", "gatling",
+ 
     # APIs & Security
-    "rest api", "soap web services",
+    "rest apis", "soap web services",
     "oauth", "jwt", "ssl", "web services security",
-
+    "web services", "soap",
+    
     # Data formats
     "json", "xml", "xsd",
 
@@ -35,16 +96,52 @@ DOMAIN_SKILLS = [
     "bpml", "business processes", "routing rules",
 
     # Protocols
-    "as2", "as3", "sftp", "ftps", "https", "cifs", "webdav",
+    "as2", "as3", "sftp", "ftps", "http/https", "cifs", "webdav",
 
     # DevOps / Tools
     "git", "jenkins", "ci/cd",
 
-    # Cloud
-    "aws", "azure", "dell boomi",
+    # Cloud  
+    "aws", "azure", "gcp", "dell boomi",
+    "aws ec2", "aws s3", "aws lambda", "aws rds", "aws cloudwatch",
+    "aws api gateway", "aws sqs", "aws sns",
+
+    "azure virtual machines", "azure blob storage", "azure functions",
+    "azure sql database", "azure devops", "azure service bus",
+
+    "gcp compute engine", "gcp cloud storage", "gcp pub/sub",
+    "cloud architecture", "cloud deployment", "cloud migration",
+    "cloud security", "cloud monitoring",
+
+    "docker", "kubernetes", "helm",
+    "terraform", "cloudformation", "infrastructure as code",
+
+    "serverless computing", "microservices", "containerization",
+    "ci/cd pipelines", "github actions", "gitlab ci",
+
+    "identity and access management", "iam", "openid connect",
 
     # OS
     "linux", "unix", "shell scripting",
+    "windows server", "macos",
+    "bash", "ksh", "zsh",
+
+   "process management", "thread management",
+   "memory management", "file system management",
+
+   "cron jobs", "systemd", "init scripts",
+
+   "user management", "permission management",
+   "ssh", "scp", "rsync",
+
+   "log monitoring", "system monitoring",
+   "top", "htop", "vmstat", "iostat",
+
+   "network configuration", "tcp/ip", "dns", "firewall",
+
+   "package management", "yum", "apt", "rpm",
+
+   "system administration", "troubleshooting", "performance tuning",
 
     # Enterprise
     "sap integrations", "idocs", "mft solutions",
