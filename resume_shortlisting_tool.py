@@ -56,7 +56,105 @@ DOMAIN_SKILLS = [
     "software testing", "test planning", "test execution", "test automation",
     "automation frameworks", "defect tracking", "performance testing", "sdlc",
     "generative ai", "ai testing", "bias detection", "test strategy",
-    "analytical skills", "problem solving", "communication", "collaboration"
+    "analytical skills", "problem solving", "communication", "collaboration",
+     
+# =========================
+# 🏢 ERP CORE
+# =========================
+"erp", "enterprise resource planning", "sap", "oracle erp",
+"microsoft dynamics", "dynamics 365", "netsuite", "odoo",
+"jd edwards", "peoplesoft",
+
+# =========================
+# 🏢 ERP FUNCTIONAL (BUSINESS MODULES)
+# =========================
+
+# Finance
+"sap fico", "sap finance", "general ledger", "accounts payable",
+"accounts receivable", "fixed assets", "cost accounting",
+"financial accounting", "taxation", "treasury",
+
+# Supply Chain
+"sap mm", "sap sd", "procurement", "purchase to pay",
+"order to cash", "inventory management", "warehouse management",
+"logistics", "demand planning", "supply chain management",
+
+# Manufacturing
+"sap pp", "production planning", "manufacturing execution",
+"mrp", "bill of materials",
+
+# HR
+"sap hcm", "successfactors", "payroll", "talent management",
+"recruitment", "learning management system",
+
+# CRM
+"sap crm", "salesforce", "customer relationship management",
+"lead management", "opportunity management",
+
+# =========================
+# 🏢 ERP TECHNICAL
+# =========================
+"sap abap", "abap", "sap hana", "s4hana", "sap bw", "sap bo",
+"sap fiori", "sap ui5", "sap basis",
+"oracle pl/sql", "oracle fusion",
+"ms dynamics crm development", "x++",
+"erp customization", "erp integration",
+
+# =========================
+# 🔗 ERP INTEGRATION & MIDDLEWARE
+# =========================
+"idoc", "bapi", "rfc", "odata", "soap", "rest api",
+"mule soft", "boomi", "sap pi", "sap po", "cpi",
+"integration suite", "api management",
+
+# =========================
+# ☁️ CLOUD ERP & MODERN ERP
+# =========================
+"sap s4hana", "s4 hana cloud", "oracle cloud erp",
+"dynamics 365 cloud", "netsuite cloud",
+"cloud migration", "erp transformation",
+
+# =========================
+# 🤖 AUTOMATION IN ERP (NEW AGE)
+# =========================
+"rpa", "uipath", "automation anywhere", "blue prism",
+"intelligent automation", "workflow automation",
+"process mining", "celonis",
+
+# =========================
+# 📊 ERP ANALYTICS & REPORTING
+# =========================
+"sap bw hana", "sap analytics cloud",
+"power bi", "tableau", "data visualization",
+"financial reporting", "dashboarding",
+
+# =========================
+# 🔄 ERP IMPLEMENTATION LIFECYCLE
+# =========================
+"erp implementation", "erp rollout", "erp migration",
+"greenfield implementation", "brownfield implementation",
+"blueprint", "gap analysis", "business process mapping",
+"fit gap analysis", "uat", "cutover", "go live support",
+
+# =========================
+# 🔐 ERP SECURITY
+# =========================
+"sap security", "roles and authorization",
+"identity access management", "gRC", "sox compliance",
+
+# =========================
+# 📊 DATA & AI IN ERP (LATEST TREND 🚀)
+# =========================
+"embedded analytics", "ai in erp", "predictive analytics",
+"generative ai", "copilot", "chatbots", "intelligent erp",
+"machine learning in erp",
+
+# =========================
+# 🧠 SOFT / CONSULTING SKILLS
+# =========================
+"stakeholder management", "requirement gathering",
+"functional consulting", "solution design",
+"change management", "client communication"
 
 ]
 
