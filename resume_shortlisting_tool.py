@@ -75,6 +75,9 @@ def build_skill_database(jd_text):
     for skill in DOMAIN_SKILLS:
         if re.search(r'\b' + re.escape(skill) + r'\b', jd_text):
             detected.add(skill)
+    
+    # ✅ Print the detected skills before validation/return
+    print("Skills extracted from JD:", list(detected))
 
     return list(detected)
 
