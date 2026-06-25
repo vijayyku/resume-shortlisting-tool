@@ -271,7 +271,7 @@ if st.button("🚀 Run ATS"):
 
         results = []
 
-        for i, f in files:
+        for i, f in enumerate(files, start=1):
             resume_text = extract_text(f)
 
             # ✅ Step 2: Match skills
