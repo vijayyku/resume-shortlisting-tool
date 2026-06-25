@@ -270,9 +270,7 @@ if st.button("🚀 Run ATS"):
         st.write(jd_skill_db)
 
         results = []
-
-        i=1
-        
+      
         for f in files:
             resume_text = extract_text(f)
 
@@ -289,7 +287,6 @@ if st.button("🚀 Run ATS"):
             score = evaluate(sim, skill_pct, jd_exp, res_exp)
 
             results.append({
-                "S.No": i,
                 "Name": f.name,
                 "Score": score,
                 "Skill Match %": round(skill_pct, 2),
@@ -297,7 +294,6 @@ if st.button("🚀 Run ATS"):
                 "Experience": res_exp,
                 "Matched Skills": ", ".join(matched),
                 "Missing Skills": ", ".join(missing),
-        i+=1
             })
 
         df = pd.DataFrame(results).sort_values(by="Score", ascending=False)
