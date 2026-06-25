@@ -328,17 +328,6 @@ def extract_experience(text):
 # =========================
 # 🏆 SCORING
 # =========================
-# def evaluate(sim, skill_pct, jd_exp, res_exp):
- #   exp_score = min(res_exp / jd_exp, 1) * 100 if jd_exp else 50
-
-  #  final = (
-   #     sim * 100 * 0.3 +
-    #    skill_pct * 0.5 +   # ✅ skills highest priority
-     #   exp_score * 0.2
-    #)
-
-    #return round(final, 2)*********
-
 def evaluate(sim, skill_pct, jd_exp, res_exp,
              missing_critical_skills=0,
              skill_weight=0.5,
