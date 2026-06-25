@@ -50,7 +50,14 @@ DOMAIN_SKILLS = [
     "sap integrations", "idocs", "mft solutions",
 
     # Methodologies
-    "agile", "scrum"
+    "agile", "scrum",
+
+    # Generic
+    "software testing", "test planning", "test execution", "test automation",
+    "automation frameworks", "defect tracking", "performance testing", "sdlc",
+    "generative ai", "ai testing", "bias detection", "test strategy",
+    "analytical skills", "problem solving", "communication", "collaboration"
+
 ]
 
 # =========================
@@ -134,8 +141,7 @@ if st.button("🚀 Run ATS"):
         st.warning("Provide JD and resumes")
     else:
         jd_text = jd.lower()
-        # ✅ Print the detected skills before validation/return
-        print("Skills extracted from JD:", jd_text) 
+
         # ✅ Step 1: Build Skill DB from JD
         jd_skill_db = build_skill_database(jd_text)
         jd_exp = extract_experience(jd_text)
