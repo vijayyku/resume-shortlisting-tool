@@ -404,4 +404,3 @@ if st.button("🚀 Run ATS"):
         # Download
         csv = df.to_csv(index=False).encode("utf-8")
         st.download_button("📥 Download", csv, "ATS_Report.csv")
-        st.write(sim)
