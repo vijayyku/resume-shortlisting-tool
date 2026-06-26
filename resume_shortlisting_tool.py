@@ -355,16 +355,12 @@ def evaluate(sim, skill_pct, jd_exp, res_exp,
     else:
         exp_score = 50
 
-    # ✅ Final weighted score
+    # ✅ Final weighted score (NO penalty applied)
     final = (
         sim_score * sim_weight +
         skill_pct * skill_weight +
         exp_score * exp_weight
     )
-
-    # ✅ ✅ Soft capped penalty (Option 3)
-    penalty = min(5, missing_critical_skills * 1.2)
-    final -= penalty
 
     # ✅ Clamp result
     return round(max(0, min(final, 100)), 2)
