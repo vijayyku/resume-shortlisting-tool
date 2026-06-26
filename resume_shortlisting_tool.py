@@ -297,16 +297,67 @@ def build_skill_database(jd_text):
 # =========================
 def match_skills(jd_db, resume_text):
     resume_text = resume_text.lower()
-    
+
+    # ✅ Normalize function
+    def normalize(text):
+        return re.sub(r'[\s\-_]', '', text.lower())
+
+    resume_norm = normalize(resume_text)
+
+    # ✅ Skill synonyms / related skills map
+    SKILL_MAP = {
+        "rest api": ["rest apis", "restful", "api", "apis", "integration"],
+        "sap ui5": ["sapui5", "ui5"],
+        "javascript": ["js", "java script"],
+        "json": ["js object notation"],
+        "xml": ["xml"],
+        "odata": ["o data", "odata services"],
+        "cds": ["cds views", "core data services"],
+        "git": ["version control", "github"],
+        "html5": ["html"],
+        "css": ["css3"],
+        "sap fiori": ["fiori"],
+        "sap gateway": ["gateway"],
+        "ui annotation": ["annotations", "ui annotations"]
+    }
+
     matched = []
+
     for skill in jd_db:
-        if re.search(r'\b' + re.escape(skill) + r'\b', resume_text):
+        skill_norm = normalize(skill)
+
+        # ✅ 1. Direct match
+        if skill_norm in resume_norm:
             matched.append(skill)
-    
-    missing = list(set(jd_db) - set(matched))
-    percent = (len(matched) / len(jd_db) * 100) if jd_db else 0
+            continue
+
+        # ✅ 2. Synonym / related match
+        for syn in SKILL_MAP.get(skill, []):
+            if normalize(syn) in resume_norm:
+                matched.append(skill)
+                break
+
+    # ✅ Smarter missing logic (avoid false negatives)
+    missing = []
+
+    for skill in jd_db:
+        if skill not in matched:
+            # ✅ Check if related concept exists
+            related_found = False
+            for syn in SKILL_MAP.get(skill, []):
+                if normalize(syn) in resume_norm:
+                    related_found = True
+                    break
+
+            if not related_found:
+                missing.append(skill)
+
+    # ✅ Improved percentage (slight boost to avoid harsh drop)
+    percent = min(100, (len(matched) / len(jd_db)) * 120) if jd_db else 0
 
     return matched, missing, percent
+
+
 
 # =========================
 # 🎯 SEMANTIC MATCH
