@@ -397,15 +397,14 @@ def compute_similarity(jd, resume):
    #     return max([int(m[0]) for m in matches])
    #  return 0.0
 
-   def extract_experience(text):
+    def extract_experience(text):
     matches = re.findall(r'(\d+(?:\.\d+)?)\+?\s*(years|yrs)', text.lower())
     
     if matches:
         return max([float(m[0]) for m in matches])
     
     return 0.0
-
-
+    
 # =========================
 # 🏆 SCORING
 # =========================
