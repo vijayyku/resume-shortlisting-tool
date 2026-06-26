@@ -334,21 +334,38 @@ def evaluate(sim, skill_pct, jd_exp, res_exp,
              sim_weight=0.2,
              exp_weight=0.2):
 
-    sim_score = max(0, min(sim, 1)) * 100
+    # Normalize similarity (handle poor similarity engines)
+    sim = max(0, min(sim, 1))
+    sim_score = sim * 100
+
+    # ✅ Apply floor to avoid unfair penalty from weak NLP
+    if sim_score < 30:
+        sim_score = 30 + (sim_score * 0.5)  # soft boost
+
+    # Skill normalization
     skill_pct = max(0, min(skill_pct, 100))
 
-    exp_score = min(res_exp / jd_exp, 1) * 100 if jd_exp else 50
+    # ✅ Experience smoothing (avoid harsh caps)
+    if jd_exp:
+        ratio = res_exp / jd_exp
+        if ratio >= 1:
+            exp_score = 100
+        else:
+            exp_score = 70 + (ratio * 30)  # smoother curve
+    else:
+        exp_score = 50
 
+    # Final weighted score
     final = (
         sim_score * sim_weight +
         skill_pct * skill_weight +
         exp_score * exp_weight
     )
 
+    # Deduction
     final -= missing_critical_skills * 5
-    final = max(0, min(final, 100))
 
-    return round(final, 2)
+    return round(max(0, min(final, 100)), 2)
 
 # =========================
 # 🖥 UI
