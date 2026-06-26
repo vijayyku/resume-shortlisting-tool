@@ -317,6 +317,7 @@ def match_skills(jd_db, resume_text):
         "html5": ["html"],
         "css": ["css3"],
         "sap fiori": ["fiori"],
+        "sap p2p": ["SAP P2P, P2P],
         "sap gateway": ["gateway"],
         "ui annotation": ["annotations", "ui annotations"]
     }
