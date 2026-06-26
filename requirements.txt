@@ -2,3 +2,5 @@ streamlit
 PyPDF2
 numpy
 scikit-learn
+pandas
+sentence-transformers
