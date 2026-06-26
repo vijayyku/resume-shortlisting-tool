@@ -378,8 +378,6 @@ def match_skills(jd_db, resume_text):
 
     return matched, missing, percent
 
-
-
 # =========================
 # 🎯 SEMANTIC MATCH
 # =========================
@@ -396,7 +394,7 @@ matches = re.findall(r'(\d+)\+?\s*(years|yrs)', text)
 if matches:
   return max([int(m[0]) for m in matches])
 return 0
-   
+
 # =========================
 # 🏆 SCORING
 # =========================
