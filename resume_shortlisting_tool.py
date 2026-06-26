@@ -317,7 +317,28 @@ def match_skills(jd_db, resume_text):
         "html5": ["html"],
         "css": ["css3"],
         "sap fiori": ["fiori"],
-        "sap p2p": ["SAP P2P", "P2P"],
+        
+    # ✅ 🚀 Strong SAP P2P mapping
+    "sap p2p": [
+        "sap p2p",
+        "p2p",
+        "procure to pay",
+        "procurement cycle",
+        "purchase to pay",
+        "accounts payable",
+        "ap",
+        "invoice processing",
+        "vendor invoice",
+        "vendor management",
+        "purchase order",
+        "po processing",
+        "goods receipt",
+        "grn",
+        "3 way matching",
+        "invoice verification",
+        "sap mm",
+        "materials management"
+        ],
         "sap gateway": ["gateway"],
         "ui annotation": ["annotations", "ui annotations"]
     }
