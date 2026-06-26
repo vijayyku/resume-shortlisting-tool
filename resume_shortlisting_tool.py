@@ -104,7 +104,7 @@ DOMAIN_SKILLS = [
     # Cloud  
     "aws", "azure", "gcp", "dell boomi",
     "aws ec2", "aws s3", "aws lambda", "aws rds", "aws cloudwatch",
-    "aws api gateway", "aws sqs", "aws sns", "AWS AppFlow", "AWS Glue",
+    "aws api gateway", "aws sqs", "aws sns", "AWS AppFlow", "AWS Glue", "DynamoDB",
 
     "azure virtual machines", "azure blob storage", "azure functions",
     "azure sql database", "azure devops", "azure service bus",
