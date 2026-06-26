@@ -104,7 +104,7 @@ DOMAIN_SKILLS = [
     # Cloud  
     "aws", "azure", "gcp", "dell boomi",
     "aws ec2", "aws s3", "aws lambda", "aws rds", "aws cloudwatch",
-    "aws api gateway", "aws sqs", "aws sns",
+    "aws api gateway", "aws sqs", "aws sns", "AWS AppFlow", "AWS Glue",
 
     "azure virtual machines", "azure blob storage", "azure functions",
     "azure sql database", "azure devops", "azure service bus",
@@ -316,6 +316,7 @@ def match_skills(jd_db, resume_text):
         "html5": ["html"],
         "css": ["css3"],
         "sap fiori": ["fiori"],
+        "CI/CD": ["ci/cd", "CI/CD Pipelines"], 
         
     # ✅ 🚀 Strong SAP P2P mapping
     "sap p2p": [
