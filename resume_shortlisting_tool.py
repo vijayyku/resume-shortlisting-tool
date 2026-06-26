@@ -169,7 +169,7 @@ DOMAIN_SKILLS = [
 # Finance
 "sap fico", "sap fica", "sap finance", "general ledger", "accounts payable",
 "accounts receivable", "fixed assets", "cost accounting",
-"financial accounting", "taxation", "treasury", "SAP P2P",
+"financial accounting", "taxation", "treasury", "SAP P2P/P2P",
 
 # Supply Chain
 "sap mm", "sap sd", "procurement", "purchase to pay",
