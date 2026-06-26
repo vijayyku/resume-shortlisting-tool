@@ -330,8 +330,8 @@ def extract_experience(text):
 # =========================
 def evaluate(sim, skill_pct, jd_exp, res_exp,
              missing_critical_skills=0,
-             skill_weight=0.5,
-             sim_weight=0.3,
+             skill_weight=0.6,
+             sim_weight=0.2,
              exp_weight=0.2):
 
     sim_score = max(0, min(sim, 1)) * 100
