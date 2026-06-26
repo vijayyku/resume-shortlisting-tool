@@ -393,7 +393,8 @@ def compute_similarity(jd, resume):
 # 📊 EXPERIENCE
 # =========================
 def extract_experience(text):
-    matches = re.findall(r'(\d+)\+?\s*(years|yrs)', text)
+    # matches = re.findall(r'(\d+)\+?\s*(years|yrs)', text)
+    matches = re.findall(r'(\d+(?:\.\d+)?)\+?\s*(years|yrs)', text)
     if matches:
         return max([int(m[0]) for m in matches])
     return 0
