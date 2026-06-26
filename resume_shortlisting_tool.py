@@ -334,15 +334,15 @@ def evaluate(sim, skill_pct, jd_exp, res_exp,
              sim_weight=0.1,
              exp_weight=0.2):
 
-    # Normalize similarity
+    # ✅ Normalize similarity
     sim = max(0, min(sim, 1))
     sim_score = sim * 100
 
-    # ✅ Strong normalization: boost weak similarity heavily
+    # ✅ Strong normalization: boost weak similarity
     if sim_score < 50:
         sim_score = 50 + (sim_score * 0.5)
 
-    # Normalize skills
+    # ✅ Normalize skills
     skill_pct = max(0, min(skill_pct, 100))
 
     # ✅ Experience scoring (reward higher experience slightly)
@@ -355,16 +355,18 @@ def evaluate(sim, skill_pct, jd_exp, res_exp,
     else:
         exp_score = 50
 
-    # Final weighted score
+    # ✅ Final weighted score
     final = (
         sim_score * sim_weight +
         skill_pct * skill_weight +
         exp_score * exp_weight
     )
 
-    # ✅ Reduce penalty impact (less aggressive)
-    final -= missing_critical_skills * 3
+    # ✅ ✅ Soft capped penalty (Option 3)
+    penalty = min(5, missing_critical_skills * 1.2)
+    final -= penalty
 
+    # ✅ Clamp result
     return round(max(0, min(final, 100)), 2)
 
 # =========================
