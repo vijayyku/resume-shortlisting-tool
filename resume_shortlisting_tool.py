@@ -363,27 +363,28 @@ def match_skills(jd_db, resume_text):
         "ui annotation": ["annotations", "ui annotations"]
     }
 
-    matched = []
-
+    matched = set()
+    
     for skill in jd_db:
         skill_lower = skill.lower()
         skill_norm = normalize(skill)
 
         # ✅ ✅ 1. Exact token match (prevents substring bugs)
         if skill_lower in resume_words:
-            matched.append(skill)
+            matched.add(skill)
             continue
 
         # ✅ ✅ 2. Safe regex match (handles c++, node.js, etc.)
         pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
         if re.search(pattern, resume_text):
-            matched.append(skill)
+            matched.add(skill)
             continue
 
-        # ✅ ✅ 3. Normalized fallback (for multi-word variants)
-        if skill_norm in resume_norm:
-            matched.append(skill)
-            continue
+     # ✅ ✅ 3. Normalized fallback (ONLY for multi-word skills)
+     if len(skill_lower) > 2 and " " in skill_lower:
+     if skill_norm in resume_norm:
+     matched.add(skill)
+     continue
 
         # ✅ ✅ 4. Synonym matching
         for syn in SKILL_MAP.get(skill_lower, []):
@@ -394,7 +395,7 @@ def match_skills(jd_db, resume_text):
                 re.search(r'(?<!\w)' + re.escape(syn) + r'(?!\w)', resume_text) or
                 syn_norm in resume_norm
             ):
-                matched.append(skill)
+                matched.add(skill)
                 break
 
     # ✅ Missing skills
@@ -404,8 +405,6 @@ def match_skills(jd_db, resume_text):
     percent = min(100, (len(matched) / len(jd_db)) * 120) if jd_db else 0
 
     return matched, missing, percent
-
-
 
 # =========================
 # 🎯 SEMANTIC MATCH
