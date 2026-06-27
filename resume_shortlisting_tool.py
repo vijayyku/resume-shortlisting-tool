@@ -316,6 +316,7 @@ def build_skill_database(jd_text):
 # =========================
 # ✅ MATCH SKILLS
 # =========================
+
 def match_skills(jd_db, resume_text):
     resume_text = resume_text.lower()
 
@@ -324,6 +325,9 @@ def match_skills(jd_db, resume_text):
         return re.sub(r'[\s\-_]', '', text.lower())
 
     resume_norm = normalize(resume_text)
+
+    # ✅ ✅ Tokenization (CRITICAL FIX)
+    resume_words = set(re.findall(r'[a-zA-Z0-9\+\#\.]+', resume_text))
 
     # ✅ Skill synonyms / related skills map
     SKILL_MAP = {
@@ -338,34 +342,22 @@ def match_skills(jd_db, resume_text):
         "html5": ["html"],
         "css": ["css3"],
         "sap fiori": ["fiori"],
-        "CI/CD": ["ci/cd", "CI/CD Pipelines"], 
+        "ci/cd": ["ci/cd", "ci cd pipelines"], 
         "c": ["c", "embedded c", "misra c"],
-        "C++": ["c++", "c++11", "c++14", "misra c++"],
-        "CAPL": ["canoe", "can analyzer", "CAPL"],
-        "Autosar": ["Autosar", "BSW", "RTE", "COM", "MCAL", "Classic Autosar", "Adaptive Autosar", "Davinci"],
-        "UDS": ["UDS", "CAPL", "Python"],
-        "CAN": ["CAN", "CAN TP"],
-        
-    # ✅ 🚀 Strong SAP P2P mapping
-    "sap p2p": [
-        "sap p2p",
-        "p2p",
-        "procure to pay",
-        "procurement cycle",
-        "purchase to pay",
-        "accounts payable",
-        "ap",
-        "invoice processing",
-        "vendor invoice",
-        "vendor management",
-        "purchase order",
-        "po processing",
-        "goods receipt",
-        "grn",
-        "3 way matching",
-        "invoice verification",
-        "sap mm",
-        "materials management"
+        "c++": ["c++", "c++11", "c++14", "misra c++"],
+        "capl": ["canoe", "can analyzer", "capl"],
+        "autosar": ["autosar", "bsw", "rte", "com", "mcal", "classic autosar", "adaptive autosar", "davinci"],
+        "uds": ["uds", "capl", "python"],
+        "can": ["can", "can tp"],
+
+        # ✅ SAP P2P mapping
+        "sap p2p": [
+            "sap p2p", "p2p", "procure to pay", "procurement cycle",
+            "purchase to pay", "accounts payable", "ap",
+            "invoice processing", "vendor invoice", "vendor management",
+            "purchase order", "po processing", "goods receipt",
+            "grn", "3 way matching", "invoice verification",
+            "sap mm", "materials management"
         ],
         "sap gateway": ["gateway"],
         "ui annotation": ["annotations", "ui annotations"]
@@ -374,35 +366,41 @@ def match_skills(jd_db, resume_text):
     matched = []
 
     for skill in jd_db:
+        skill_lower = skill.lower()
         skill_norm = normalize(skill)
 
-        # ✅ 1. Direct match
+        # ✅ ✅ 1. Exact token match (prevents substring bugs)
+        if skill_lower in resume_words:
+            matched.append(skill)
+            continue
+
+        # ✅ ✅ 2. Safe regex match (handles c++, node.js, etc.)
+        pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
+        if re.search(pattern, resume_text):
+            matched.append(skill)
+            continue
+
+        # ✅ ✅ 3. Normalized fallback (for multi-word variants)
         if skill_norm in resume_norm:
             matched.append(skill)
             continue
 
-        # ✅ 2. Synonym / related match
-        for syn in SKILL_MAP.get(skill, []):
-            if normalize(syn) in resume_norm:
+        # ✅ ✅ 4. Synonym matching
+        for syn in SKILL_MAP.get(skill_lower, []):
+            syn_norm = normalize(syn)
+
+            if (
+                syn in resume_words or
+                re.search(r'(?<!\w)' + re.escape(syn) + r'(?!\w)', resume_text) or
+                syn_norm in resume_norm
+            ):
                 matched.append(skill)
                 break
 
-    # ✅ Smarter missing logic (avoid false negatives)
-    missing = []
+    # ✅ Missing skills
+    missing = [skill for skill in jd_db if skill not in matched]
 
-    for skill in jd_db:
-        if skill not in matched:
-            # ✅ Check if related concept exists
-            related_found = False
-            for syn in SKILL_MAP.get(skill, []):
-                if normalize(syn) in resume_norm:
-                    related_found = True
-                    break
-
-            if not related_found:
-                missing.append(skill)
-
-    # ✅ Improved percentage (slight boost to avoid harsh drop)
+    # ✅ Percentage
     percent = min(100, (len(matched) / len(jd_db)) * 120) if jd_db else 0
 
     return matched, missing, percent
