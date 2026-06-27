@@ -438,6 +438,18 @@ def evaluate(sim, skill_pct, jd_exp, res_exp,
              sim_weight=0.1,
              exp_weight=0.2):
 
+    
+    # ✅ Convert safely (VERY IMPORTANT FIX)
+    try:
+        jd_exp = float(jd_exp)
+    except:
+        jd_exp = 0.0
+
+    try:
+        res_exp = float(res_exp)
+    except:
+        res_exp = 0.0
+                 
     # ✅ Normalize similarity
     sim = max(0, min(sim, 1))
     sim_score = sim * 100
@@ -450,7 +462,7 @@ def evaluate(sim, skill_pct, jd_exp, res_exp,
     skill_pct = max(0, min(skill_pct, 100))
 
     # ✅ Experience scoring (reward higher experience slightly)
-    if jd_exp:
+    if jd_exp > 0:
         ratio = res_exp / jd_exp
         if ratio >= 1:
             exp_score = 100 + min((ratio - 1) * 10, 10)  # bonus up to 110
