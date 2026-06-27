@@ -282,15 +282,13 @@ def extract_text(file):
             text += page.extract_text()
     return text.lower()
     
-# Call the function and print
-result = extract_text("sample.pdf")
-print(result)
-
 # =========================
 # ✅ BUILD SKILL DB FROM JD
 # =========================
 def build_skill_database(jd_text):
     jd_text = re.sub(r'[^a-zA-Z0-9\s]', ' ', jd_text.lower())
+   
+    print(jd_text)
 
     detected = set()
     for skill in DOMAIN_SKILLS:
