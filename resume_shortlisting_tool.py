@@ -319,6 +319,12 @@ def match_skills(jd_db, resume_text):
         "css": ["css3"],
         "sap fiori": ["fiori"],
         "CI/CD": ["ci/cd", "CI/CD Pipelines"], 
+        "c": ["c", "embedded c", "misra c"],
+        "C++": ["c++", "c++11", "c++14", "misra c++"],
+        "CAPL": ["canoe", "can analyzer", "CAPL"],
+        "Autosar": ["Autosar", "BSW", "RTE", "COM", "MCAL", "Classic Autosar", "Adaptive Autosar", "Davinci"],
+        "UDS": ["UDS", "CAPL", "Python"],
+        "CAN": ["CAN", "CAN TP"],
         
     # ✅ 🚀 Strong SAP P2P mapping
     "sap p2p": [
