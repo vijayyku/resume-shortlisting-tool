@@ -12,7 +12,7 @@ st.title("🚀 Advanced ATS - AI Skill Matching")
 # ✅ DOMAIN SKILLS
 # =========================
 DOMAIN_SKILLS = [
-    "c", "c++", "linux", "python", "java",
+    "c", "c++", "C++14", "linux", "python", "java",
     "sap", "sap fica", "sap mm", "sap p2p",
     "sql", "api testing", "selenium", "jira"
 ]
