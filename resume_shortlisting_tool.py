@@ -150,7 +150,7 @@ def evaluate_advanced(sim, skill_pct, jd_exp, res_exp, missing_skills):
     # ✅ Penalty for missing key skills
     penalty = min(30, len(missing_skills) * 5)
 
-    final = (0.4 * skill_score) + (0.3 * sim_score) + (0.3 * exp_score) - penalty
+    final = (0.6 * skill_score) + (0.2 * sim_score) + (0.2 * exp_score) - penalty
 
     return round(max(0, min(final, 100)), 2)
 
