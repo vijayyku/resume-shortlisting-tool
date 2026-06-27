@@ -425,8 +425,9 @@ def extract_experience(text):
     matches = re.findall(r'(\d+(?:\.\d+)?)\+?\s*(years|yrs)', text)
     if matches:
         #return max([int(m[0]) for m in matches])
-        return max(matches, key=lambda x: float(x[0]))[0] if matches else "0"
-    #return 0
+        #return max(matches, key=lambda x: float(x[0]))[0] if matches else "0"
+        return float(max(matches, key=lambda x: float(x[0]))[0])
+    #return 0.0
 
 # =========================
 # 🏆 SCORING
