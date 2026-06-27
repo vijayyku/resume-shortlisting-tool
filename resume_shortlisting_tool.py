@@ -286,10 +286,7 @@ def extract_text(file):
 # ✅ BUILD SKILL DB FROM JD
 # =========================
 def build_skill_database(jd_text):
-    jd_text = re.sub(r'[^a-zA-Z0-9\s]', ' ', jd_text.lower())
-   
-    print(jd_text)
-
+    jd_text = re.sub(r'[^a-zA-Z0-9\s\+\#]', ' ', jd_text.lower())
     detected = set()
     for skill in DOMAIN_SKILLS:
         if re.search(r'\b' + re.escape(skill) + r'\b', jd_text):
