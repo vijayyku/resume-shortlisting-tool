@@ -281,6 +281,11 @@ def extract_text(file):
         if page.extract_text():
             text += page.extract_text()
     return text.lower()
+    
+# Call the function and print
+result = extract_text("sample.pdf")
+print(result)
+
 # =========================
 # ✅ BUILD SKILL DB FROM JD
 # =========================
