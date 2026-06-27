@@ -12,9 +12,91 @@ st.title("🚀 Advanced ATS - AI Skill Matching")
 # ✅ DOMAIN SKILLS
 # =========================
 DOMAIN_SKILLS = [
-    "c", "c++", "C++14", "linux", "python", "java",
-    "sap", "sap fica", "sap mm", "sap p2p",
-    "sql", "api testing", "selenium", "jira"
+
+# =========================
+    # 🧑‍💻 CORE PROGRAMMING
+    # =========================
+    "c", "c++", "c++11", "c++14", "c++17", "c#", "java", "python",
+    "go", "rust", "scala", "kotlin", "swift", "php", "ruby", "r", "matlab",
+
+    # =========================
+    # ⚙️ EMBEDDED / AUTOMOTIVE
+    # =========================
+    "embedded c", "embedded c++", "autosar", "classic autosar", "adaptive autosar",
+    "aspice", "iso 26262", "can", "can tp", "capl", "canoe", "canalyzer",
+    "uds", "diagnostics", "davinci", "rte", "mcal", "bsw",
+
+    # =========================
+    # 🌐 WEB & FULL STACK
+    # =========================
+    "html", "css", "javascript", "typescript",
+    "react", "angular", "vue", "node.js", "express.js",
+    "spring boot", "spring mvc", "rest apis", "graphql",
+    "frontend development", "backend development", "full stack development",
+
+    # =========================
+    # 🧪 TESTING
+    # =========================
+    "selenium", "pytest", "cypress", "playwright",
+    "manual testing", "automation testing", "regression testing",
+    "api testing", "postman", "rest assured", "jmeter",
+    "testng", "junit", "bdd", "cucumber",
+
+    # =========================
+    # 🔗 INTEGRATION / MIDDLEWARE
+    # =========================
+    "mulesoft", "dell boomi", "tibco", "webmethods",
+    "sap pi", "sap po", "sap cpi",
+    "integration suite", "api gateway",
+    "kafka", "rabbitmq", "activemq", "ibm mq",
+
+    # =========================
+    # 📊 DATA & FORMATS
+    # =========================
+    "sql", "pl/sql", "mongodb", "nosql",
+    "json", "xml", "xsd", "csv",
+
+    # =========================
+    # ☁️ CLOUD
+    # =========================
+    "aws", "azure", "gcp",
+    "aws ec2", "aws s3", "aws lambda", "aws rds",
+    "azure devops", "azure functions",
+    "gcp compute engine",
+
+    # =========================
+    # ⚙️ DEVOPS / TOOLS
+    # =========================
+    "git", "github", "gitlab", "jenkins", "ci/cd",
+    "docker", "kubernetes", "terraform",
+    "ansible", "helm",
+
+    # =========================
+    # 💻 OPERATING SYSTEMS
+    # =========================
+    "linux", "unix", "windows server",
+    "shell scripting", "bash", "ksh",
+
+    # =========================
+    # 🏢 SAP / ERP
+    # =========================
+    "sap", "sap fico", "sap fica", "sap mm", "sap sd",
+    "sap abap", "sap hana", "s4hana",
+    "sap fiori", "sap ui5", "sap basis",
+
+    # =========================
+    # 💼 ERP FUNCTIONAL
+    # =========================
+    "procure to pay", "order to cash", "inventory management",
+    "accounts payable", "accounts receivable",
+    "financial accounting", "supply chain management",
+
+    # =========================
+    # 🤖 MODERN / AI
+    # =========================
+    "machine learning", "deep learning", "nlp",
+    "generative ai", "llm", "chatgpt",
+    "data science", "data analytics"
 ]
 
 # =========================
