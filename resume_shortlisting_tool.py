@@ -14,9 +14,11 @@ st.title("🏢 Enterprise ATS - JD Driven Skill Matching")
 DOMAIN_SKILLS = [
     # Core Programming
     "java", "j2ee", "spring boot", "jdbc", "sql", "rest",
-    "python", "c", "c++", "c#", "javascript", "typescript",
-    "go", "rust", "kotlin", "scala", "swift",
-    "php", "ruby", "dart", "r", "matlab",
+    "python", "c", "c++", "c/c++","c#", "javascript", "typescript",
+    "go", "rust", "kotlin", "scala", "swift", "c++11", "c++14", "MISRA C++",
+    "php", "ruby", "dart", "r", "matlab", "Embedded C,C++", "Embedded C", "Embedded C++", 
+    "Autosar", "ASPICE", "ISO 26262", "CAN", "CAPL", "CANOE", "CAN ANALYZER", "UDS", "Android",
+    "iOS", "Mobile Apps",
    
     # Integration / Middleware
     "ibm sterling b2b integrator", "axway b2bi",
