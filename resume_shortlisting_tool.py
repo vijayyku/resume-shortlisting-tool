@@ -286,11 +286,31 @@ def extract_text(file):
 # ✅ BUILD SKILL DB FROM JD
 # =========================
 def build_skill_database(jd_text):
-    jd_text = re.sub(r'[^a-zA-Z0-9\s\+\#]', ' ', jd_text.lower())
+    jd_text = re.sub(r'[^a-zA-Z0-9\s\++\#]', ' ', jd_text.lower())
     detected = set()
+    #for skill in DOMAIN_SKILLS:
+    #    if re.search(r'\b' + re.escape(skill) + r'\b', jd_text):
+    #        detected.add(skill) 
+    # return list(detected)
+    
     for skill in DOMAIN_SKILLS:
-        if re.search(r'\b' + re.escape(skill) + r'\b', jd_text):
-            detected.add(skill) 
+        skill_lower = skill.lower()
+
+        # ✅ Special handling for "c" to avoid matching inside "c++"
+        if skill_lower == "c":
+            pattern = r'(?<!\w)c(?![\w\+])'
+
+        # ✅ Skills with special characters like C++, C#, Node.js
+        elif any(ch in skill_lower for ch in ['+', '#', '.']):
+            pattern = r'(?<!\w)' + re.escape(skill_lower)
+
+        # ✅ Normal words
+        else:
+            pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
+
+        if re.search(pattern, jd_text):
+            detected.add(skill)
+
     return list(detected)
 
 # =========================
