@@ -285,35 +285,49 @@ def extract_text(file):
 # =========================
 # ✅ BUILD SKILL DB FROM JD
 # =========================
-
 def build_skill_database(jd_text):
-    jd_text = re.sub(r'[^a-zA-Z0-9\s\++\#]', ' ', jd_text.lower())
+    # ✅ Normalize text
+    jd_text = jd_text.lower()
+    jd_text = re.sub(r'[-_/]', ' ', jd_text)  # normalize separators like sap-ui5 → sap ui5
+    jd_text = re.sub(r'[^a-zA-Z0-9\s\+#\.]', ' ', jd_text)
+
     detected = set()
 
     for skill in DOMAIN_SKILLS:
         skill_lower = skill.lower()
+        skill_norm = re.sub(r'[-_/]', ' ', skill_lower).strip()
 
-        # ✅ Special handling for "c" to avoid matching inside "c++"
-        if skill_lower == "c":
-            pattern = r'(?<!\w)c(?![\w\+])'
+        # ✅ Special handling for "c"
+        if skill_norm == "c":
+            pattern = r'(?<![a-zA-Z])c(?![a-zA-Z+])'
 
-        # ✅ Skills with special characters like C++, C#, Node.js
-        elif any(ch in skill_lower for ch in ['+', '#', '.']):
-            pattern = r'(?<!\w)' + re.escape(skill_lower)
+        # ✅ Skills with special characters (C++, C#, Node.js)
+        elif any(ch in skill_norm for ch in ['+', '#', '.']):
+            pattern = r'(?<![a-zA-Z0-9])' + re.escape(skill_norm)
+
+        # ✅ Alphanumeric skills (sapui5, aws3, etc.)
+        elif any(ch.isdigit() for ch in skill_norm):
+            pattern = r'(?<![a-zA-Z])' + re.escape(skill_norm) + r'(?![a-zA-Z])'
 
         # ✅ Normal words
         else:
-            pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
+            pattern = r'\b' + re.escape(skill_norm) + r'\b'
 
+        # ✅ Search in JD text
         if re.search(pattern, jd_text):
             detected.add(skill)
+
+        # ✅ Extra fallback: handle spaced variations (sap ui5 vs sapui5)
+        elif " " in skill_norm:
+            compact_skill = skill_norm.replace(" ", "")
+            if compact_skill in jd_text.replace(" ", ""):
+                detected.add(skill)
 
     return list(detected)
     
 # =========================
 # ✅ MATCH SKILLS
 # =========================
-
 def match_skills(jd_db, resume_text):
     resume_text = resume_text.lower()
 
