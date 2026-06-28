@@ -256,7 +256,7 @@ DOMAIN_SKILLS = [
 "change management", "client communication",
 
 # SAP Utilities & Revenue Management
-"SAP IS-U", "SAP S/4HANA Utilities", "SAPS/4HANA",
+"SAP IS-U", "SAP S/4HANA Utilities", "SAPS/4HANA", "SAP S/4 HANA Retail", "S/4HANA", "SAPUI5",
 "SAP BRIM (Billing and Revenue Innovation Management)",
 
 # Core Financials (FI-CA)
@@ -293,25 +293,49 @@ def build_skill_database(jd_text):
     #        detected.add(skill) 
     # return list(detected)
     
-    for skill in DOMAIN_SKILLS:
-        skill_lower = skill.lower()
+    #for skill in DOMAIN_SKILLS:
+     #   skill_lower = skill.lower()
 
         # ✅ Special handling for "c" to avoid matching inside "c++"
-        if skill_lower == "c":
-            pattern = r'(?<!\w)c(?![\w\+])'
+      #  if skill_lower == "c":
+       #     pattern = r'(?<!\w)c(?![\w\+])'
 
         # ✅ Skills with special characters like C++, C#, Node.js
-        elif any(ch in skill_lower for ch in ['+', '#', '.']):
-            pattern = r'(?<!\w)' + re.escape(skill_lower)
+        #elif any(ch in skill_lower for ch in ['+', '#', '.']):
+         #   pattern = r'(?<!\w)' + re.escape(skill_lower)
 
         # ✅ Normal words
-        else:
-            pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
+        #else:
+         #   pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
 
-        if re.search(pattern, jd_text):
-            detected.add(skill)
+        #if re.search(pattern, jd_text):
+         #   detected.add(skill)
 
-    return list(detected)
+    #return list(detected)
+    
+    for skill in DOMAIN_SKILLS:
+    skill_lower = skill.lower()
+
+    # ✅ Handle pure "c"
+    if skill_lower == "c":
+        pattern = r'(?<![a-zA-Z])c(?![a-zA-Z+])'
+
+    # ✅ Skills with special chars
+    elif any(ch in skill_lower for ch in ['+', '#', '.']):
+        pattern = r'(?<![a-zA-Z0-9])' + re.escape(skill_lower)
+
+    # ✅ Alphanumeric skills like sapui5
+    elif any(ch.isdigit() for ch in skill_lower):
+        pattern = r'(?<![a-zA-Z])' + re.escape(skill_lower) + r'(?![a-zA-Z])'
+
+    # ✅ Normal words
+    else:
+        pattern = r'\b' + re.escape(skill_lower) + r'\b'
+
+    if re.search(pattern, jd_text):
+        detected.add(skill)
+        
+   return list(detected)
 
 # =========================
 # ✅ MATCH SKILLS
