@@ -314,28 +314,28 @@ def build_skill_database(jd_text):
     #return list(detected)
     
     for skill in DOMAIN_SKILLS:
-    skill_lower = skill.lower()
+        skill_lower = skill.lower()
 
-    # ✅ Handle pure "c"
-    if skill_lower == "c":
+        # ✅ Handle pure "c"
+        if skill_lower == "c":
         pattern = r'(?<![a-zA-Z])c(?![a-zA-Z+])'
 
-    # ✅ Skills with special chars
-    elif any(ch in skill_lower for ch in ['+', '#', '.']):
+        # ✅ Skills with special chars
+        elif any(ch in skill_lower for ch in ['+', '#', '.']):
         pattern = r'(?<![a-zA-Z0-9])' + re.escape(skill_lower)
 
-    # ✅ Alphanumeric skills like sapui5
-    elif any(ch.isdigit() for ch in skill_lower):
+        # ✅ Alphanumeric skills like sapui5
+        elif any(ch.isdigit() for ch in skill_lower):
         pattern = r'(?<![a-zA-Z])' + re.escape(skill_lower) + r'(?![a-zA-Z])'
 
-    # ✅ Normal words
-    else:
+        # ✅ Normal words
+        else:
         pattern = r'\b' + re.escape(skill_lower) + r'\b'
 
-    if re.search(pattern, jd_text):
+        if re.search(pattern, jd_text):
         detected.add(skill)
         
-   return list(detected)
+    return list(detected)
 
 # =========================
 # ✅ MATCH SKILLS
