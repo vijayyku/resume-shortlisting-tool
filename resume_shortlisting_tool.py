@@ -318,7 +318,8 @@ def build_skill_database(jd_text):
 
         # ✅ Handle pure "c"
         if skill_lower == "c":
-        pattern = r'(?<![a-zA-Z])c(?![a-zA-Z+])'
+        #pattern = r'(?<![a-zA-Z])c(?![a-zA-Z+])'
+        pattern = r'(?<!\w)c(?![\w\+])'    
 
         # ✅ Skills with special chars
         elif any(ch in skill_lower for ch in ['+', '#', '.']):
