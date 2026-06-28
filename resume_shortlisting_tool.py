@@ -293,8 +293,8 @@ def build_skill_database(jd_text):
     #        detected.add(skill) 
     # return list(detected)
     
-    #for skill in DOMAIN_SKILLS:
-     #   skill_lower = skill.lower()
+       #for skill in DOMAIN_SKILLS:
+       #skill_lower = skill.lower()
 
         # ✅ Special handling for "c" to avoid matching inside "c++"
       #  if skill_lower == "c":
