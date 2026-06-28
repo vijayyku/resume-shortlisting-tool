@@ -1,4 +1,4 @@
-import streamlit as st
+mport streamlit as st
 from PyPDF2 import PdfReader
 import re
 import pandas as pd
@@ -6,97 +6,269 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 st.set_page_config(layout="wide")
-st.title("🚀 Advanced ATS - AI Skill Matching")
+st.title("🏢 Enterprise ATS - JD Driven Skill Matching")
 
 # =========================
-# ✅ DOMAIN SKILLS
+# ✅ DOMAIN SKILL LIBRARY (ENTERPRISE)
 # =========================
 DOMAIN_SKILLS = [
+    # Core Programming
+    "java", "j2ee", "spring boot", "jdbc", "sql", "rest",
+    "python", "c", "c++", "c/c++","c#", "javascript", "typescript",
+    "go", "rust", "kotlin", "scala", "swift", "c++11", "c++14", "MISRA C++",
+    "php", "ruby", "dart", "r", "matlab", "Embedded C,C++", "Embedded C", "Embedded C++", 
+    "Autosar", "ASPICE", "ISO 26262", "CAN", "CAPL", "CANOE", "CAN ANALYZER", "UDS", "Android",
+    "iOS", "Mobile Apps",
+   
+    # Integration / Middleware
+    "ibm sterling b2b integrator", "axway b2bi",
+    "mulesoft", "dell boomi", "tibco",
+    "b2b integrations", "edi workflows",
+    
+   "ibm sterling b2b integrator", "axway b2bi",
+   "mulesoft", "dell boomi", "tibco", "webmethods",
+   "oracle soa suite", "sap pi/po", "snaplogic",
+
+   "b2b integrations", "edi workflows", "edi mapping",
+   "x12", "edifact", "tradacoms", "xml", "json",
+
+    "enterprise service bus", "event-driven architecture",
+   "message queues", "kafka", "rabbitmq", "activemq", "ibm mq",
+
+   "data transformation", "data mapping", "schema validation",
+   "integration patterns", "api management", "api gateway",
+
+   "microservices integration", "cloud integration",
+   "hybrid integration platforms", "ipaas",
+    
+    # EDI Standards
+    "edi", "x12", "edifact", "itx",
+    "ibm transformation extender", "map editor",
+    
+   # Web Development
+   "html", "css", "javascript", "typescript",
+   "react", "angular", "vue.js", "next.js",
+   "bootstrap", "tailwind css", "material ui",
+   "jquery", "ajax", "dom manipulation",
+
+   "node.js", "express.js", "spring mvc", "spring web",
+   "restful apis", "graphql", "web services",
+   "json", "xml",
+
+   "frontend development", "backend development", "full stack development",
+   "responsive design", "cross-browser compatibility",
+
+   "web security", "cors", "xss", "csrf",
+   "session management", "cookies",
+
+   "webpack", "vite", "babel",
+   "npm", "yarn",
+
+   "api integration", "third-party integrations",
+   "seo basics", "performance optimization",
+
+   # Web Testing
+   "selenium", "cypress", "playwright", "puppeteer",
+   "manual testing", "automation testing", "functional testing",
+   "regression testing", "smoke testing", "sanity testing",
+
+   "ui testing", "frontend testing", "cross-browser testing",
+   "cross-device testing",
+
+   "api testing", "postman", "rest assured", "soap ui",
+   "unit testing", "integration testing", "end-to-end testing",
+
+   "jest", "mocha", "chai", "junit", "testng",
+
+   "bdd", "cucumber", "gherkin", "pytest", "testng",
+
+   "test case design", "test execution", "defect tracking",
+
+   "performance testing", "load testing", "jmeter", "gatling",
+ 
+    # APIs & Security
+    "rest apis", "soap web services",
+    "oauth", "jwt", "ssl", "web services security",
+    "web services", "soap",
+    
+    # Data formats
+    "json", "xml", "xsd",
+
+    # Workflow
+    "bpml", "business processes", "routing rules",
+
+    # Protocols
+    "as2", "as3", "sftp", "ftps", "http/https", "cifs", "webdav",
+
+    # DevOps / Tools
+    "git", "jenkins", "ci/cd",
+
+    # Cloud  
+    "aws", "azure", "gcp", "dell boomi",
+    "aws ec2", "aws s3", "aws lambda", "aws rds", "aws cloudwatch",
+    "aws api gateway", "aws sqs", "aws sns", "AWS AppFlow", "AWS Glue", "DynamoDB",
+
+    "azure virtual machines", "azure blob storage", "azure functions",
+    "azure sql database", "azure devops", "azure service bus",
+
+    "gcp compute engine", "gcp cloud storage", "gcp pub/sub",
+    "cloud architecture", "cloud deployment", "cloud migration",
+    "cloud security", "cloud monitoring",
+
+    "docker", "kubernetes", "helm",
+    "terraform", "cloudformation", "infrastructure as code",
+
+    "serverless computing", "microservices", "containerization",
+    "ci/cd pipelines", "github actions", "gitlab ci",
+
+    "identity and access management", "iam", "openid connect",
+
+    # OS
+    "linux", "unix", "shell scripting",
+    "windows server", "macos",
+    "bash", "ksh", "zsh",
+
+   "process management", "thread management",
+   "memory management", "file system management",
+
+   "cron jobs", "systemd", "init scripts",
+
+   "user management", "permission management",
+   "ssh", "scp", "rsync",
+
+   "log monitoring", "system monitoring",
+   "top", "htop", "vmstat", "iostat",
+
+   "network configuration", "tcp/ip", "dns", "firewall",
+
+   "package management", "yum", "apt", "rpm",
+
+   "system administration", "troubleshooting", "performance tuning",
+
+    # Enterprise
+    "sap integrations", "idocs", "mft solutions",
+
+    # Methodologies
+    "agile", "scrum",
+
+    # Generic
+    "software testing", "test planning", "test execution", "test automation",
+    "automation frameworks", "defect tracking", "performance testing", "sdlc",
+    "generative ai", "ai testing", "bias detection", "test strategy",
+    "analytical skills", "problem solving", "communication", "collaboration",
+     
+# =========================
+# 🏢 ERP CORE
+# =========================
+"erp", "enterprise resource planning", "sap", "oracle erp",
+"microsoft dynamics", "dynamics 365", "netsuite", "odoo",
+"jd edwards", "peoplesoft",
 
 # =========================
-    # 🧑‍💻 CORE PROGRAMMING
-    # =========================
-    "c", "c++", "c++11", "c++14", "c++17", "c#", "java", "python",
-    "go", "rust", "scala", "kotlin", "swift", "php", "ruby", "r", "matlab",
+# 🏢 ERP FUNCTIONAL (BUSINESS MODULES)
+# =========================
 
-    # =========================
-    # ⚙️ EMBEDDED / AUTOMOTIVE
-    # =========================
-    "embedded c", "embedded c++", "autosar", "classic autosar", "adaptive autosar",
-    "aspice", "iso 26262", "can", "can tp", "capl", "canoe", "canalyzer",
-    "uds", "diagnostics", "davinci", "rte", "mcal", "bsw",
+# Finance
+"sap fico", "sap fica", "sap finance", "general ledger", "accounts payable",
+"accounts receivable", "fixed assets", "cost accounting",
+"financial accounting", "taxation", "treasury", "SAP P2P", "P2P",
 
-    # =========================
-    # 🌐 WEB & FULL STACK
-    # =========================
-    "html", "css", "javascript", "typescript",
-    "react", "angular", "vue", "node.js", "express.js",
-    "spring boot", "spring mvc", "rest apis", "graphql",
-    "frontend development", "backend development", "full stack development",
+# Supply Chain
+"sap mm", "sap sd", "procurement", "purchase to pay",
+"order to cash", "inventory management", "warehouse management",
+"logistics", "demand planning", "supply chain management",
 
-    # =========================
-    # 🧪 TESTING
-    # =========================
-    "selenium", "pytest", "cypress", "playwright",
-    "manual testing", "automation testing", "regression testing",
-    "api testing", "postman", "rest assured", "jmeter",
-    "testng", "junit", "bdd", "cucumber",
+# Manufacturing
+"sap pp", "production planning", "manufacturing execution",
+"mrp", "bill of materials",
 
-    # =========================
-    # 🔗 INTEGRATION / MIDDLEWARE
-    # =========================
-    "mulesoft", "dell boomi", "tibco", "webmethods",
-    "sap pi", "sap po", "sap cpi",
-    "integration suite", "api gateway",
-    "kafka", "rabbitmq", "activemq", "ibm mq",
+# HR
+"sap hcm", "successfactors", "payroll", "talent management",
+"recruitment", "learning management system",
 
-    # =========================
-    # 📊 DATA & FORMATS
-    # =========================
-    "sql", "pl/sql", "mongodb", "nosql",
-    "json", "xml", "xsd", "csv",
+# CRM
+"sap crm", "salesforce", "customer relationship management",
+"lead management", "opportunity management",
 
-    # =========================
-    # ☁️ CLOUD
-    # =========================
-    "aws", "azure", "gcp",
-    "aws ec2", "aws s3", "aws lambda", "aws rds",
-    "azure devops", "azure functions",
-    "gcp compute engine",
+# =========================
+# 🏢 ERP TECHNICAL
+# =========================
+"sap abap", "abap", "sap hana", "s4hana", "sap bw", "sap bo",
+"sap fiori", "sap ui5", "sap basis", "SAP UX", "SAP UX", "SAP UX XML",
+"oracle pl/sql", "oracle fusion", "SAP UI5 framework",
+"ms dynamics crm development", "x++",
+"erp customization", "erp integration",
 
-    # =========================
-    # ⚙️ DEVOPS / TOOLS
-    # =========================
-    "git", "github", "gitlab", "jenkins", "ci/cd",
-    "docker", "kubernetes", "terraform",
-    "ansible", "helm",
+# =========================
+# 🔗 ERP INTEGRATION & MIDDLEWARE
+# =========================
+"idoc", "bapi", "rfc", "odata", "soap", "rest api",
+"mule soft", "boomi", "sap pi", "sap po", "cpi",
+"integration suite", "api management",
 
-    # =========================
-    # 💻 OPERATING SYSTEMS
-    # =========================
-    "linux", "unix", "windows server",
-    "shell scripting", "bash", "ksh",
+# =========================
+# ☁️ CLOUD ERP & MODERN ERP
+# =========================
+"sap s4hana", "s4 hana cloud", "oracle cloud erp",
+"dynamics 365 cloud", "netsuite cloud",
+"cloud migration", "erp transformation",
 
-    # =========================
-    # 🏢 SAP / ERP
-    # =========================
-    "sap", "sap fico", "sap fica", "sap mm", "sap sd",
-    "sap abap", "sap hana", "s4hana",
-    "sap fiori", "sap ui5", "sap basis",
+# =========================
+# 🤖 AUTOMATION IN ERP (NEW AGE)
+# =========================
+"rpa", "uipath", "automation anywhere", "blue prism",
+"intelligent automation", "workflow automation",
+"process mining", "celonis",
 
-    # =========================
-    # 💼 ERP FUNCTIONAL
-    # =========================
-    "procure to pay", "order to cash", "inventory management",
-    "accounts payable", "accounts receivable",
-    "financial accounting", "supply chain management",
+# =========================
+# 📊 ERP ANALYTICS & REPORTING
+# =========================
+"sap bw hana", "sap analytics cloud",
+"power bi", "tableau", "data visualization",
+"financial reporting", "dashboarding",
 
-    # =========================
-    # 🤖 MODERN / AI
-    # =========================
-    "machine learning", "deep learning", "nlp",
-    "generative ai", "llm", "chatgpt",
-    "data science", "data analytics"
+# =========================
+# 🔄 ERP IMPLEMENTATION LIFECYCLE
+# =========================
+"erp implementation", "erp rollout", "erp migration",
+"greenfield implementation", "brownfield implementation",
+"blueprint", "gap analysis", "business process mapping",
+"fit gap analysis", "uat", "cutover", "go live support",
+
+# =========================
+# 🔐 ERP SECURITY
+# =========================
+"sap security", "roles and authorization",
+"identity access management", "gRC", "sox compliance",
+
+# =========================
+# 📊 DATA & AI IN ERP (LATEST TREND 🚀)
+# =========================
+"embedded analytics", "ai in erp", "predictive analytics",
+"generative ai", "copilot", "chatbots", "intelligent erp",
+"machine learning in erp",
+
+# =========================
+# 🧠 SOFT / CONSULTING SKILLS
+# =========================
+"stakeholder management", "requirement gathering",
+"functional consulting", "solution design",
+"change management", "client communication",
+
+# SAP Utilities & Revenue Management
+"SAP IS-U", "SAP S/4HANA Utilities", "SAPS/4HANA",
+"SAP BRIM (Billing and Revenue Innovation Management)",
+
+# Core Financials (FI-CA)
+"contract accounting (fi-ca)", "accounts receivable",
+"dunning", "collections management", "credit management",
+"dispute management", "cash application", "payment processing",
+
+# Billing & Invoicing
+"billing", "invoicing", "rate determination",
+"tariff configuration", "bill simulation",
+"convergent invoicing (ci)", "invoice processing"
+    
 ]
 
 # =========================
@@ -106,25 +278,33 @@ def extract_text(file):
     reader = PdfReader(file)
     text = ""
     for page in reader.pages:
-        page_text = page.extract_text()
-        if page_text:
-            text += page_text
+        if page.extract_text():
+            text += page.extract_text()
     return text.lower()
-
+    
 # =========================
 # ✅ BUILD SKILL DB FROM JD
 # =========================
 def build_skill_database(jd_text):
-    jd_text = re.sub(r'[^a-zA-Z0-9\s\+\#\.]', ' ', jd_text.lower())
+    jd_text = re.sub(r'[^a-zA-Z0-9\s\++\#]', ' ', jd_text.lower())
     detected = set()
-
+    #for skill in DOMAIN_SKILLS:
+    #    if re.search(r'\b' + re.escape(skill) + r'\b', jd_text):
+    #        detected.add(skill) 
+    # return list(detected)
+    
     for skill in DOMAIN_SKILLS:
         skill_lower = skill.lower()
 
+        # ✅ Special handling for "c" to avoid matching inside "c++"
         if skill_lower == "c":
             pattern = r'(?<!\w)c(?![\w\+])'
+
+        # ✅ Skills with special characters like C++, C#, Node.js
         elif any(ch in skill_lower for ch in ['+', '#', '.']):
             pattern = r'(?<!\w)' + re.escape(skill_lower)
+
+        # ✅ Normal words
         else:
             pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
 
@@ -134,68 +314,100 @@ def build_skill_database(jd_text):
     return list(detected)
 
 # =========================
-# ✅ SEMANTIC SKILL MATCH
+# ✅ MATCH SKILLS
 # =========================
-def semantic_skill_match(skill, resume_text):
-    try:
-        vectorizer = TfidfVectorizer(stop_words="english")
-        vectors = vectorizer.fit_transform([skill, resume_text])
-        return cosine_similarity(vectors[0:1], vectors[1:2])[0][0]
-    except:
-        return 0
 
-# =========================
-# ✅ ADVANCED MATCH SKILLS
-# =========================
-def match_skills_advanced(jd_db, resume_text):
+def match_skills(jd_db, resume_text):
     resume_text = resume_text.lower()
 
+    # ✅ Normalize function
     def normalize(text):
-        return re.sub(r'[\s\-_]', '', text)
+        return re.sub(r'[\s\-_]', '', text.lower())
 
     resume_norm = normalize(resume_text)
+
+    # ✅ ✅ Tokenization (CRITICAL FIX)
     resume_words = set(re.findall(r'[a-zA-Z0-9\+\#\.]+', resume_text))
 
-    matched = set()
-    partial_matches = {}
+    # ✅ Skill synonyms / related skills map
+    SKILL_MAP = {
+        "rest api": ["rest apis", "restful", "api", "apis", "integration"],
+        "sap ui5": ["sapui5", "ui5"],
+        "javascript": ["js", "java script"],
+        "json": ["js object notation"],
+        "xml": ["xml"],
+        "odata": ["o data", "odata services"],
+        "cds": ["cds views", "core data services"],
+        "git": ["version control", "github"],
+        "html5": ["html"],
+        "css": ["css3"],
+        "sap fiori": ["fiori"],
+        "ci/cd": ["ci/cd", "ci cd pipelines"], 
+        "c": ["c", "embedded c", "misra c"],
+        "c++": ["c++", "c++11", "c++14", "misra c++"],
+        "capl": ["canoe", "can analyzer", "capl"],
+        "autosar": ["autosar", "bsw", "rte", "com", "mcal", "classic autosar", "adaptive autosar", "davinci"],
+        "uds": ["uds", "capl", "python"],
+        "can": ["can", "can tp"],
 
+        # ✅ SAP P2P mapping
+        "sap p2p": [
+            "sap p2p", "p2p", "procure to pay", "procurement cycle",
+            "purchase to pay", "accounts payable", "ap",
+            "invoice processing", "vendor invoice", "vendor management",
+            "purchase order", "po processing", "goods receipt",
+            "grn", "3 way matching", "invoice verification",
+            "sap mm", "materials management"
+        ],
+        "sap gateway": ["gateway"],
+        "ui annotation": ["annotations", "ui annotations"]
+    }
+
+    matched = set()
+    
     for skill in jd_db:
         skill_lower = skill.lower()
         skill_norm = normalize(skill)
 
-        # ✅ Exact match
+        # ✅ ✅ 1. Exact token match (prevents substring bugs)
         if skill_lower in resume_words:
             matched.add(skill)
             continue
 
-        # ✅ Regex match
+        # ✅ ✅ 2. Safe regex match (handles c++, node.js, etc.)
         pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
         if re.search(pattern, resume_text):
             matched.add(skill)
             continue
 
-        # ✅ Multi-word normalized match
-        if len(skill_lower) > 2 and " " in skill_lower:
-            if skill_norm in resume_norm:
+     # ✅ ✅ 3. Normalized fallback (ONLY for multi-word skills)
+     if len(skill_lower) > 2 and " " in skill_lower:
+        if skill_norm in resume_norm:
+        matched.add(skill)
+     continue
+
+        # ✅ ✅ 4. Synonym matching
+        for syn in SKILL_MAP.get(skill_lower, []):
+            syn_norm = normalize(syn)
+
+            if (
+                syn in resume_words or
+                re.search(r'(?<!\w)' + re.escape(syn) + r'(?!\w)', resume_text) or
+                syn_norm in resume_norm
+            ):
                 matched.add(skill)
-                continue
+                break
 
-        # ✅ ✅ Semantic match (AI-like)
-        score = semantic_skill_match(skill, resume_text)
-        if score > 0.3:
-            partial_matches[skill] = round(score, 2)
+    # ✅ Missing skills
+    missing = [skill for skill in jd_db if skill not in matched]
 
-    missing = [s for s in jd_db if s not in matched and s not in partial_matches]
+    # ✅ Percentage
+    percent = min(100, (len(matched) / len(jd_db)) * 120) if jd_db else 0
 
-    total = len(jd_db)
-    matched_score = len(matched) + 0.5 * len(partial_matches)
-
-    percent = min(100, (matched_score / total) * 100) if total else 0
-
-    return list(matched), partial_matches, missing, percent
+    return matched, missing, percent
 
 # =========================
-# 🎯 SEMANTIC JD vs RESUME
+# 🎯 SEMANTIC MATCH
 # =========================
 def compute_similarity(jd, resume):
     vectorizer = TfidfVectorizer(stop_words="english")
@@ -206,34 +418,64 @@ def compute_similarity(jd, resume):
 # 📊 EXPERIENCE
 # =========================
 def extract_experience(text):
-    matches = re.findall(r'(\d+(?:\.\d+)?)\+?\s*(years|yrs)', text.lower())
+    # matches = re.findall(r'(\d+)\+?\s*(years|yrs)', text)
+    matches = re.findall(r'(\d+(?:\.\d+)?)\+?\s*(years|yrs)', text)
     if matches:
+        #return max([int(m[0]) for m in matches])
+        #return max(matches, key=lambda x: float(x[0]))[0] if matches else "0"
         return float(max(matches, key=lambda x: float(x[0]))[0])
-    return 0.0
+    #return 0.0
 
 # =========================
-# 🏆 ADVANCED SCORING
+# 🏆 SCORING
 # =========================
-def evaluate_advanced(sim, skill_pct, jd_exp, res_exp, missing_skills):
+def evaluate(sim, skill_pct, jd_exp, res_exp,
+             missing_critical_skills=0,
+             skill_weight=0.7,
+             sim_weight=0.1,
+             exp_weight=0.2):
 
-    jd_exp = float(jd_exp) if jd_exp else 0.0
-    res_exp = float(res_exp) if res_exp else 0.0
+    
+    # ✅ Convert safely (VERY IMPORTANT FIX)
+    try:
+        jd_exp = float(jd_exp)
+    except:
+        jd_exp = 0.0
 
+    try:
+        res_exp = float(res_exp)
+    except:
+        res_exp = 0.0
+                 
+    # ✅ Normalize similarity
+    sim = max(0, min(sim, 1))
     sim_score = sim * 100
-    skill_score = skill_pct
 
-    # ✅ Experience scoring
+    # ✅ Strong normalization: boost weak similarity
+    if sim_score < 50:
+        sim_score = 50 + (sim_score * 0.5)
+
+    # ✅ Normalize skills
+    skill_pct = max(0, min(skill_pct, 100))
+
+    # ✅ Experience scoring (reward higher experience slightly)
     if jd_exp > 0:
         ratio = res_exp / jd_exp
-        exp_score = min(100, 70 + ratio * 30)
+        if ratio >= 1:
+            exp_score = 100 + min((ratio - 1) * 10, 10)  # bonus up to 110
+        else:
+            exp_score = 70 + (ratio * 30)
     else:
         exp_score = 50
 
-    # ✅ Penalty for missing key skills
-    penalty = min(30, len(missing_skills) * 5)
+    # ✅ Final weighted score (NO penalty applied)
+    final = (
+        sim_score * sim_weight +
+        skill_pct * skill_weight +
+        exp_score * exp_weight
+    )
 
-    final = (0.6 * skill_score) + (0.2 * sim_score) + (0.2 * exp_score) - penalty
-
+    # ✅ Clamp result
     return round(max(0, min(final, 100)), 2)
 
 # =========================
@@ -248,45 +490,45 @@ if st.button("🚀 Run ATS"):
     else:
         jd_text = jd.lower()
 
-        # ✅ Build JD skill DB
+        # ✅ Step 1: Build Skill DB from JD
         jd_skill_db = build_skill_database(jd_text)
         jd_exp = extract_experience(jd_text)
 
-        st.subheader("🧠 Extracted JD Skills")
+        st.subheader("🧠 Extracted Skill Database (from JD)")
         st.write(jd_skill_db)
 
         results = []
-
+      
         for f in files:
             resume_text = extract_text(f)
 
-            # ✅ Advanced Matching
-            matched, partial, missing, skill_pct = match_skills_advanced(jd_skill_db, resume_text)
+            # ✅ Step 2: Match skills
+            matched, missing, skill_pct = match_skills(jd_skill_db, resume_text)
 
-            # ✅ Semantic similarity
+            # ✅ Step 3: Semantic match
             sim = compute_similarity(jd_text, resume_text)
 
-            # ✅ Experience
+            # ✅ Step 4: Experience
             res_exp = extract_experience(resume_text)
 
-            # ✅ Final scoring
-            score = evaluate_advanced(sim, skill_pct, jd_exp, res_exp, missing)
+            # ✅ Step 5: Final Score
+            score = evaluate(sim, skill_pct, jd_exp, res_exp)
 
             results.append({
                 "Name": f.name,
                 "Score": score,
-                "Skill %": round(skill_pct, 2),
+                "Skill Match %": round(skill_pct, 2),
                 "Similarity %": round(sim * 100, 2),
                 "Experience": res_exp,
                 "Matched Skills": ", ".join(matched),
-                "Partial Matches": str(partial),
                 "Missing Skills": ", ".join(missing),
             })
 
         df = pd.DataFrame(results).sort_values(by="Score", ascending=False)
 
-        st.subheader("🏆 Candidate Ranking")
+        st.subheader("🏆 Ranking")
         st.dataframe(df, hide_index=True)
 
+        # Download
         csv = df.to_csv(index=False).encode("utf-8")
-        st.download_button("📥 Download Report", csv, "ATS_Report.csv")
+        st.download_button("📥 Download", csv, "ATS_Report.csv")
