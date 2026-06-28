@@ -288,55 +288,27 @@ def extract_text(file):
 def build_skill_database(jd_text):
     jd_text = re.sub(r'[^a-zA-Z0-9\s\++\#]', ' ', jd_text.lower())
     detected = set()
-    #for skill in DOMAIN_SKILLS:
-    #    if re.search(r'\b' + re.escape(skill) + r'\b', jd_text):
-    #        detected.add(skill) 
-    # return list(detected)
-    
-       #for skill in DOMAIN_SKILLS:
-       #skill_lower = skill.lower()
+  
+       for skill in DOMAIN_SKILLS:
+       skill_lower = skill.lower()
 
         # ✅ Special handling for "c" to avoid matching inside "c++"
-      #  if skill_lower == "c":
-       #     pattern = r'(?<!\w)c(?![\w\+])'
+         if skill_lower == "c":
+         pattern = r'(?<!\w)c(?![\w\+])'
 
         # ✅ Skills with special characters like C++, C#, Node.js
-        #elif any(ch in skill_lower for ch in ['+', '#', '.']):
-         #   pattern = r'(?<!\w)' + re.escape(skill_lower)
-
-        # ✅ Normal words
-        #else:
-         #   pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
-
-        #if re.search(pattern, jd_text):
-         #   detected.add(skill)
-
-    #return list(detected)
-    
-    for skill in DOMAIN_SKILLS:
-        skill_lower = skill.lower()
-
-        # ✅ Handle pure "c"
-        if skill_lower == "c":
-        pattern = r'(?<![a-zA-Z])c(?![a-zA-Z+])' 
-
-        # ✅ Skills with special chars
-        elif any(ch in skill_lower for ch in ['+', '#', '.']):
-        pattern = r'(?<![a-zA-Z0-9])' + re.escape(skill_lower)
-
-        # ✅ Alphanumeric skills like sapui5
-        elif any(ch.isdigit() for ch in skill_lower):
-        pattern = r'(?<![a-zA-Z])' + re.escape(skill_lower) + r'(?![a-zA-Z])'
+         elif any(ch in skill_lower for ch in ['+', '#', '.']):
+         pattern = r'(?<!\w)' + re.escape(skill_lower)
 
         # ✅ Normal words
         else:
-        pattern = r'\b' + re.escape(skill_lower) + r'\b'
+         pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
 
         if re.search(pattern, jd_text):
-        detected.add(skill)
-        
-    return list(detected)
+           detected.add(skill)
 
+    return list(detected) 
+    
 # =========================
 # ✅ MATCH SKILLS
 # =========================
