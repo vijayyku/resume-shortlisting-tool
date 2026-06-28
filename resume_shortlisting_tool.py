@@ -379,13 +379,13 @@ def match_skills(jd_db, resume_text):
         if re.search(pattern, resume_text):
             matched.add(skill)
             continue
-
-     # ✅ ✅ 3. Normalized fallback (ONLY for multi-word skills)
-     if len(skill_lower) > 2 and " " in skill_lower:
-        if skill_norm in resume_norm:
-        matched.add(skill)
-     continue
-
+            
+       # ✅ 3. Normalized fallback (ONLY for multi-word skills)
+       if len(skill_lower) > 2 and " " in skill_lower:
+          if skill_norm in resume_norm:
+             matched.add(skill)
+             continue
+ 
         # ✅ ✅ 4. Synonym matching
         for syn in SKILL_MAP.get(skill_lower, []):
             syn_norm = normalize(syn)
