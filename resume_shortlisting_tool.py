@@ -490,7 +490,6 @@ def match_skills(jd_db, resume_text):
 
     matched = set()
 
-
 for skill in jd_db:
     skill_lower = skill.lower()
     skill_norm = normalize(skill)
@@ -498,19 +497,19 @@ for skill in jd_db:
     # ✅ ✅ 1. STRICT regex match (primary fix for C, C++, etc.)
     if skill_lower == "c":
         # exact 'c' only (prevents React, CSS, etc.)
-        if re.search(r"\bc\b", resume_text):
+        if re.search(r'\bc\b', resume_text):
             matched.add(skill)
             continue
 
     elif skill_lower in ["c++", "c#"]:
-        pattern = r"\b" + re.escape(skill_lower) + r"\b"
+        pattern = r'\b' + re.escape(skill_lower) + r'\b'
         if re.search(pattern, resume_text):
             matched.add(skill)
             continue
 
     else:
         # general safe boundary match
-        pattern = r"\b" + re.escape(skill_lower) + r"\b"
+        pattern = r'\b' + re.escape(skill_lower) + r'\b'
         if re.search(pattern, resume_text):
             matched.add(skill)
             continue
@@ -531,9 +530,12 @@ for skill in jd_db:
         syn_norm = normalize(syn)
 
         # safe regex instead of direct 'in'
-        pattern = r"\b" + re.escape(syn_lower) + r"\b"
+        pattern = r'\b' + re.escape(syn_lower) + r'\b'
 
-        if re.search(pattern, resume_text) or syn_norm in resume_norm:
+        if (
+            re.search(pattern, resume_text) or
+            syn_norm in resume_norm
+        ):
             matched.add(skill)
             break
 
