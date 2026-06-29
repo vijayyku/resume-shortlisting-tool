@@ -471,8 +471,8 @@ def match_skills(jd_db, resume_text):
     matched = set()
     
     for skill in jd_db:
-        skill_lower = skill.lower()
-        skill_norm = normalize(skill)
+    skill_lower = skill.lower()
+    skill_norm = normalize(skill)
 
 
       # ✅ 1. Handle "C" first (special case)
