@@ -427,12 +427,12 @@ def match_skills(jd_db, resume_text):
 
     # ✅ Normalize function
     def normalize(text):
-        return re.sub(r"[\s\-_]", "", text.lower())
+        return re.sub(r'[\s\-_]', '', text.lower())
 
     resume_norm = normalize(resume_text)
 
     # ✅ ✅ Tokenization (CRITICAL FIX)
-    resume_words = set(re.findall(r"[a-zA-Z0-9\+\#\.]+", resume_text))
+    resume_words = set(re.findall(r'[a-zA-Z0-9\+\#\.]+', resume_text))
 
     # ✅ Skill synonyms / related skills map
     SKILL_MAP = {
@@ -447,97 +447,60 @@ def match_skills(jd_db, resume_text):
         "html5": ["html"],
         "css": ["css3"],
         "sap fiori": ["fiori"],
-        "ci/cd": ["ci/cd", "ci cd pipelines"],
+        "ci/cd": ["ci/cd", "ci cd pipelines"], 
         "c": ["c", "embedded c", "misra c"],
         "c++": ["c++", "c++11", "c++14", "misra c++"],
         "capl": ["canoe", "can analyzer", "capl"],
-        "autosar": [
-            "autosar",
-            "bsw",
-            "rte",
-            "com",
-            "mcal",
-            "classic autosar",
-            "adaptive autosar",
-            "davinci",
-        ],
+        "autosar": ["autosar", "bsw", "rte", "com", "mcal", "classic autosar", "adaptive autosar", "davinci"],
         "uds": ["uds", "capl", "python"],
         "can": ["can", "can tp"],
+
         # ✅ SAP P2P mapping
         "sap p2p": [
-            "sap p2p",
-            "p2p",
-            "procure to pay",
-            "procurement cycle",
-            "purchase to pay",
-            "accounts payable",
-            "ap",
-            "invoice processing",
-            "vendor invoice",
-            "vendor management",
-            "purchase order",
-            "po processing",
-            "goods receipt",
-            "grn",
-            "3 way matching",
-            "invoice verification",
-            "sap mm",
-            "materials management",
+            "sap p2p", "p2p", "procure to pay", "procurement cycle",
+            "purchase to pay", "accounts payable", "ap",
+            "invoice processing", "vendor invoice", "vendor management",
+            "purchase order", "po processing", "goods receipt",
+            "grn", "3 way matching", "invoice verification",
+            "sap mm", "materials management"
         ],
         "sap gateway": ["gateway"],
-        "ui annotation": ["annotations", "ui annotations"],
+        "ui annotation": ["annotations", "ui annotations"]
     }
 
     matched = set()
+    
+    for skill in jd_db:
+        skill_lower = skill.lower()
+        skill_norm = normalize(skill)
 
-for skill in jd_db:
-    skill_lower = skill.lower()
-    skill_norm = normalize(skill)
-
-    # ✅ ✅ 1. STRICT regex match (primary fix for C, C++, etc.)
-    if skill_lower == "c":
-        # exact 'c' only (prevents React, CSS, etc.)
-        if re.search(r'\bc\b', resume_text):
+        # ✅ ✅ 1. Exact token match (prevents substring bugs)
+        if skill_lower in resume_words:
             matched.add(skill)
             continue
 
-    elif skill_lower in ["c++", "c#"]:
-        pattern = r'\b' + re.escape(skill_lower) + r'\b'
+        # ✅ ✅ 2. Safe regex match (handles c++, node.js, etc.)
+        pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
         if re.search(pattern, resume_text):
             matched.add(skill)
             continue
+            
+       # ✅ 3. Cleaner single-condition version
+       #if len(skill_lower) > 2 and " " in skill_lower and skill_norm in resume_norm:
+        #   matched.add(skill)
+         #  continue
+ 
+        # ✅ ✅ 4. Synonym matching
+        for syn in SKILL_MAP.get(skill_lower, []):
+            syn_norm = normalize(syn)
 
-    else:
-        # general safe boundary match
-        pattern = r'\b' + re.escape(skill_lower) + r'\b'
-        if re.search(pattern, resume_text):
-            matched.add(skill)
-            continue
-
-    # ✅ ✅ 2. Token match (fallback, still safe)
-    if skill_lower in resume_words:
-        matched.add(skill)
-        continue
-
-    # ✅ ✅ 3. Multi-word normalized match (clean fix)
-    if len(skill_lower) > 2 and " " in skill_lower and skill_norm in resume_norm:
-        matched.add(skill)
-        continue
-
-    # ✅ ✅ 4. Synonym matching (fixed for boundaries)
-    for syn in SKILL_MAP.get(skill_lower, []):
-        syn_lower = syn.lower()
-        syn_norm = normalize(syn)
-
-        # safe regex instead of direct 'in'
-        pattern = r'\b' + re.escape(syn_lower) + r'\b'
-
-        if (
-            re.search(pattern, resume_text) or
-            syn_norm in resume_norm
-        ):
-            matched.add(skill)
-            break
+            if (
+                syn in resume_words or
+                re.search(r'(?<!\w)' + re.escape(syn) + r'(?!\w)', resume_text) or
+                syn_norm in resume_norm
+            ):
+                matched.add(skill)
+                break
 
     # ✅ Missing skills
     missing = [skill for skill in jd_db if skill not in matched]
