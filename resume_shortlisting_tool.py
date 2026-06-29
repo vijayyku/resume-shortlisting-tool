@@ -52,7 +52,7 @@ DOMAIN_SKILLS = [
    "jquery", "ajax", "dom manipulation",
 
    "node.js", "express.js", "spring mvc", "spring web",
-   "restful apis", "graphql", "web services",
+   "restful apis", "graphql", "web services", "web service",
    "json", "xml",
 
    "frontend development", "backend development", "full stack development",
@@ -197,7 +197,9 @@ DOMAIN_SKILLS = [
 "sap fiori", "sap ui5", "sap basis", "SAP UX", "SAP UX", "SAP UX XML",
 "oracle pl/sql", "oracle fusion", "SAP UI5 framework",
 "ms dynamics crm development", "x++",
-"erp customization", "erp integration",
+"erp customization", "erp integration", "Object-Oriented Programming", "oops",
+"Adobe Forms", Workflow", "BADI","IDOC", "BAPIs", "User exits", "RAP (Restful ABAP Programming)", "RAP",
+"SAP Business Technology Platform", "SAP BTP",
 
 # =========================
 # 🔗 ERP INTEGRATION & MIDDLEWARE
