@@ -18,7 +18,7 @@ DOMAIN_SKILLS = [
     "go", "rust", "kotlin", "scala", "swift", "c++11", "c++14", "MISRA C++",
     "php", "ruby", "dart", "r", "matlab", "Embedded C,C++", "Embedded C", "Embedded C++", 
     "Autosar", "ASPICE", "ISO 26262", "CAN", "CAPL", "CANOE", "CAN ANALYZER", "UDS", "Android",
-    "iOS", "Mobile Apps", "RTOS", "rtos", 
+    "iOS", "Mobile Apps", "rtos", 
 
     #All RTOS
     "FreeRTOS", "VxWorks", "QNX Neutrino RTOS", "RTLinux", "Zephyr RTOS", "ThreadX (Azure RTOS)",
