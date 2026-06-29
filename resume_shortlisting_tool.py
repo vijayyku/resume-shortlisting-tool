@@ -451,7 +451,7 @@ def match_skills(jd_db, resume_text):
         "c": ["c", "embedded c", "misra c"],
         "c++": ["c++", "c++11", "c++14", "misra c++"],
         "capl": ["canoe", "can analyzer", "capl"],
-        "autosar": ["autosar", "autosar bsw", "autosar rte", "Autosar com", "autosar mcal", "classic autosar", "adaptive autosar", "vector davinci"],
+        "autosar": ["autosar", "bsw", "rte", "com", "mcal", "classic autosar", "adaptive autosar", "davinci"],
         "uds": ["uds", "capl", "python"],
         "can": ["can", "can tp"],
 
@@ -471,35 +471,36 @@ def match_skills(jd_db, resume_text):
     matched = set()
     
     for skill in jd_db:
-    skill_lower = skill.lower()
-    skill_norm = normalize(skill)
+        skill_lower = skill.lower()
+        skill_norm = normalize(skill)
 
-    # ✅ ✅ 1. Exact token match (prevents substring bugs)
-    if skill_lower in resume_words:
-    matched.add(skill)
-    continue
-        
-    # ✅ ✅ 2. Safe regex match (handles c++, node.js, etc.)
-    pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
-    if re.search(pattern, resume_text):
-    matched.add(skill)
-    continue
+        # ✅ ✅ 1. Exact token match (prevents substring bugs)
+        if skill_lower in resume_words:
+            matched.add(skill)
+            continue
+
+        # ✅ ✅ 2. Safe regex match (handles c++, node.js, etc.)
+        pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
+        if re.search(pattern, resume_text):
+            matched.add(skill)
+            continue
             
-    # ✅ 3. Cleaner single-condition version
-    #if len(skill_lower) > 2 and " " in skill_lower and skill_norm in resume_norm:
-    #   matched.add(skill)
-    #  continue
+       # ✅ 3. Cleaner single-condition version
+       #if len(skill_lower) > 2 and " " in skill_lower and skill_norm in resume_norm:
+        #   matched.add(skill)
+         #  continue
  
-    # ✅ ✅ 4. Synonym matching
-    for syn in SKILL_MAP.get(skill_lower, []):
-    syn_norm = normalize(syn)
-    if (
-        syn in resume_words or
-        re.search(r'(?<!\w)' + re.escape(syn) + r'(?!\w)', resume_text) or
-        syn_norm in resume_norm
-        ):
-    matched.add(skill)
-    break
+        # ✅ ✅ 4. Synonym matching
+        for syn in SKILL_MAP.get(skill_lower, []):
+            syn_norm = normalize(syn)
+
+            if (
+                syn in resume_words or
+                re.search(r'(?<!\w)' + re.escape(syn) + r'(?!\w)', resume_text) or
+                syn_norm in resume_norm
+            ):
+                matched.add(skill)
+                break
 
     # ✅ Missing skills
     missing = [skill for skill in jd_db if skill not in matched]
