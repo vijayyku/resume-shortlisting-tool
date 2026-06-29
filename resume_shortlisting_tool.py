@@ -290,7 +290,7 @@ DOMAIN_SKILLS = [
         "Risk Management",
        "Stakeholder Management",
        "project management", 
-        "Program Management",
+        "Program management",
         "Program Strategy",
         "Roadmapping",
         "Portfolio Management",
