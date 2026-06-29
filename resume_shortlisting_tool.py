@@ -451,7 +451,7 @@ def match_skills(jd_db, resume_text):
         "c": ["c", "embedded c", "misra c"],
         "c++": ["c++", "c++11", "c++14", "misra c++"],
         "capl": ["canoe", "can analyzer", "capl"],
-        "autosar": ["autosar", "bsw", "rte", "com", "mcal", "classic autosar", "adaptive autosar", "davinci"],
+        "autosar": ["autosar", "autosar bsw", "autosar rte", "Autosar com", "autosar mcal", "classic autosar", "adaptive autosar", "vector davinci"],
         "uds": ["uds", "capl", "python"],
         "can": ["can", "can tp"],
 
