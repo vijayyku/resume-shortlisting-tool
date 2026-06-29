@@ -17,8 +17,8 @@ DOMAIN_SKILLS = [
     "python", "c", "c++", "c/c++","c#", "javascript", "typescript",
     "go", "rust", "kotlin", "scala", "swift", "c++11", "c++14", "MISRA C++",
     "php", "ruby", "dart", "r", "matlab", "Embedded C,C++", "Embedded C", "Embedded C++", 
-    "Autosar", "ASPICE", "ISO 26262", "CAN", "CAPL", "CANOE", "CAN ANALYZER", "UDS", "Android",
-    "iOS", "Mobile Apps", "rtos", 
+    "Autosar", "ASPICE", "ISO 26262", "CAN", "CAN TP", "CAPL", "CANOE", "CAN ANALYZER", "UDS", "Android",
+    "iOS", "Mobile Apps", "rtos", "bsw", "rte", "com", "mcal", "classic autosar", "adaptive autosar", "davinci",
 
     #All RTOS
     "FreeRTOS", "VxWorks", "QNX Neutrino RTOS", "RTLinux", "Zephyr RTOS", "ThreadX (Azure RTOS)",
