@@ -226,7 +226,7 @@ DOMAIN_SKILLS = [
 # =========================
 "rpa", "uipath", "automation anywhere", "blue prism",
 "intelligent automation", "workflow automation",
-"process mining", "celonis",
+"process mining", "celonis", "tosca",
 
 # =========================
 # 📊 ERP ANALYTICS & REPORTING
