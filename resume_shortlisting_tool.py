@@ -18,7 +18,13 @@ DOMAIN_SKILLS = [
     "go", "rust", "kotlin", "scala", "swift", "c++11", "c++14", "MISRA C++",
     "php", "ruby", "dart", "r", "matlab", "Embedded C,C++", "Embedded C", "Embedded C++", 
     "Autosar", "ASPICE", "ISO 26262", "CAN", "CAPL", "CANOE", "CAN ANALYZER", "UDS", "Android",
-    "iOS", "Mobile Apps",
+    "iOS", "Mobile Apps", "RTOS", "rtos", 
+
+    #All RTOS
+    "FreeRTOS", "VxWorks", "QNX Neutrino RTOS", "RTLinux", "Zephyr RTOS", "ThreadX (Azure RTOS)",
+    "NuttX RTOS", "eCos (Embedded Configurable Operating System)", "µC/OS-II", "µC/OS-III", "TI-RTOS",
+    "ChibiOS", "Integrity RTOS", "SafeRTOS", "PikeOS", "Contiki RTOS", "RIOT OS", "Mbed OS", "LiteOS (Huawei LiteOS)",
+    "Apache Mynewt", "Nano-RK", "Keil RTX (RTX5)", "OSEK/VDX", "AUTOSAR OS", "RTEMS (Real-Time Executive for Multiprocessor Systems)",
    
     # Integration / Middleware
     "ibm sterling b2b integrator", "axway b2bi",
@@ -198,7 +204,7 @@ DOMAIN_SKILLS = [
 "oracle pl/sql", "oracle fusion", "SAP UI5 framework",
 "ms dynamics crm development", "x++",
 "erp customization", "erp integration", "Object-Oriented Programming", "oops",
-"Adobe Forms", Workflow", "BADI","IDOC", "BAPIs", "User exits", "RAP (Restful ABAP Programming)", "RAP",
+"Adobe Forms", "Workflow", "BADI","IDOC", "BAPIs", "User exits", "RAP (Restful ABAP Programming)", "RAP",
 "SAP Business Technology Platform", "SAP BTP",
 
 # =========================
