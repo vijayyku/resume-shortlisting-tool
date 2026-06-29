@@ -281,6 +281,7 @@ DOMAIN_SKILLS = [
         "Issue Management",
         "Risk Management",
        "Stakeholder Management",
+       "project management", 
         "Program Management",
         "Program Strategy",
         "Roadmapping",
