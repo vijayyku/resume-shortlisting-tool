@@ -269,11 +269,8 @@ DOMAIN_SKILLS = [
 "tariff configuration", "bill simulation",
 "convergent invoicing (ci)", "invoice processing",
 
-
-project_program_management_skills = {
-    "project_management_fundamentals": [
-        "Project Planning",
-        "Project Execution",
+# project or program management skills 
+"Project Planning", "Project Execution",
         "Project Lifecycle Management",
         "Scope Management",
         "Work Breakdown Structure (WBS)",
@@ -283,10 +280,7 @@ project_program_management_skills = {
         "Change Management",
         "Issue Management",
         "Risk Management",
-        "Stakeholder Management"
-    ],
-
-    "program_management": [
+       "Stakeholder Management",
         "Program Management",
         "Program Strategy",
         "Roadmapping",
@@ -294,11 +288,9 @@ project_program_management_skills = {
         "Benefits Realization",
         "Dependency Management",
         "Cross-Functional Coordination",
-        "Business Transformation"
-    ],
+        "Business Transformation",
 
-    "agile_methodologies": [
-        "Agile Project Management",
+    "Agile Project Management",
         "Scrum",
         "Kanban",
         "SAFe (Scaled Agile Framework)",
@@ -308,11 +300,8 @@ project_program_management_skills = {
         "Release Planning",
         "Daily Standups",
         "Sprint Reviews",
-        "Retrospectives"
-    ],
-
-    "financial_delivery_management": [
-        "Budget Planning",
+        "Retrospectives",
+    "Budget Planning",
         "Cost Control",
         "Financial Forecasting",
         "Resource Allocation",
@@ -320,11 +309,8 @@ project_program_management_skills = {
         "Earned Value Management (EVM)",
         "ROI Analysis",
         "Vendor Management",
-        "Procurement Management"
-    ],
-
-    "risk_quality_management": [
-        "Risk Assessment",
+        "Procurement Management",
+    "Risk Assessment",
         "Risk Mitigation",
         "Issue Resolution",
         "Escalation Management",
@@ -333,22 +319,16 @@ project_program_management_skills = {
         "Audit Readiness",
         "Process Improvement",
         "Lean",
-        "Six Sigma"
-    ],
-
-    "leadership_stakeholder_management": [
-        "Stakeholder Communication",
+        "Six Sigma",
+    "Stakeholder Communication",
         "Executive Reporting",
         "Dashboard Reporting",
         "Team Leadership",
         "Conflict Resolution",
         "Decision Making",
         "Negotiation",
-        "Influence Without Authority"
-    ],
-
-    "tools": [
-        "Microsoft Project",
+        "Influence Without Authority",
+    "Microsoft Project",
         "Jira",
         "Jira Align",
         "Asana",
@@ -361,28 +341,19 @@ project_program_management_skills = {
         "SharePoint",
         "Power BI",
         "Tableau",
-        "Advanced Excel"
-    ],
-
-    "technical_domain": [
-        "SDLC",
+        "Advanced Excel",
+    "SDLC",
         "Agile SDLC",
         "Cloud Projects (Azure, AWS)",
         "DevOps Coordination",
         "API Integration",
-        "Digital Transformation"
-    ],
-
-    "certifications_keywords": [
-        "PMP",
+        "Digital Transformation",
+   "PMP",
         "PRINCE2",
         "Certified Scrum Master (CSM)",
         "PMI-ACP",
         "SAFe Agilist",
-        "Lean Six Sigma"
-    ]
-}
-    
+        "Lean Six Sigma" 
 ]
 
 # =========================
