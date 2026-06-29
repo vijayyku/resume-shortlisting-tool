@@ -469,38 +469,61 @@ def match_skills(jd_db, resume_text):
     }
 
     matched = set()
-    
-    for skill in jd_db:
-        skill_lower = skill.lower()
-        skill_norm = normalize(skill)
 
-        # ✅ ✅ 1. Exact token match (prevents substring bugs)
-        if skill_lower in resume_words:
+    #New Code
+    
+matched = set()
+
+for skill in jd_db:
+    skill_lower = skill.lower()
+    skill_norm = normalize(skill)
+
+    # ✅ ✅ 1. STRICT regex match (primary fix for C, C++, etc.)
+    if skill_lower == "c":
+        # exact 'c' only (prevents React, CSS, etc.)
+        if re.search(r'\bc\b', resume_text):
             matched.add(skill)
             continue
 
-        # ✅ ✅ 2. Safe regex match (handles c++, node.js, etc.)
-        pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
+    elif skill_lower in ["c++", "c#"]:
+        pattern = r'\b' + re.escape(skill_lower) + r'\b'
         if re.search(pattern, resume_text):
             matched.add(skill)
             continue
-            
-       # ✅ 3. Cleaner single-condition version
-       #if len(skill_lower) > 2 and " " in skill_lower and skill_norm in resume_norm:
-        #   matched.add(skill)
-         #  continue
- 
-        # ✅ ✅ 4. Synonym matching
-        for syn in SKILL_MAP.get(skill_lower, []):
-            syn_norm = normalize(syn)
 
-            if (
-                syn in resume_words or
-                re.search(r'(?<!\w)' + re.escape(syn) + r'(?!\w)', resume_text) or
-                syn_norm in resume_norm
-            ):
-                matched.add(skill)
-                break
+    else:
+        # general safe boundary match
+        pattern = r'\b' + re.escape(skill_lower) + r'\b'
+        if re.search(pattern, resume_text):
+            matched.add(skill)
+            continue
+
+    # ✅ ✅ 2. Token match (fallback, still safe)
+    if skill_lower in resume_words:
+        matched.add(skill)
+        continue
+
+    # ✅ ✅ 3. Multi-word normalized match (clean fix)
+    if len(skill_lower) > 2 and " " in skill_lower and skill_norm in resume_norm:
+        matched.add(skill)
+        continue
+
+    # ✅ ✅ 4. Synonym matching (fixed for boundaries)
+    for syn in SKILL_MAP.get(skill_lower, []):
+        syn_lower = syn.lower()
+        syn_norm = normalize(syn)
+
+        # safe regex instead of direct 'in'
+        pattern = r'\b' + re.escape(syn_lower) + r'\b'
+
+        if (
+            re.search(pattern, resume_text) or
+            syn_norm in resume_norm
+        ):
+            matched.add(skill)
+            break
+
+   #End of new code
 
     # ✅ Missing skills
     missing = [skill for skill in jd_db if skill not in matched]
