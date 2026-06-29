@@ -484,7 +484,7 @@ def match_skills(jd_db, resume_text):
     if skill_lower == "c":
         if re.search(r'\bc\b', resume_text):
             matched.add(skill)
-        continue
+            continue
 
     # ✅ ✅ ✅ 1. Token match (SAFE version)
     # prevent single letter bugs like "c"
