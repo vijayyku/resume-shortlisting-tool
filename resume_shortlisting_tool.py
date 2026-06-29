@@ -267,7 +267,121 @@ DOMAIN_SKILLS = [
 # Billing & Invoicing
 "billing", "invoicing", "rate determination",
 "tariff configuration", "bill simulation",
-"convergent invoicing (ci)", "invoice processing"
+"convergent invoicing (ci)", "invoice processing",
+
+
+project_program_management_skills = {
+    "project_management_fundamentals": [
+        "Project Planning",
+        "Project Execution",
+        "Project Lifecycle Management",
+        "Scope Management",
+        "Work Breakdown Structure (WBS)",
+        "Milestone Tracking",
+        "Deliverables Management",
+        "Project Governance",
+        "Change Management",
+        "Issue Management",
+        "Risk Management",
+        "Stakeholder Management"
+    ],
+
+    "program_management": [
+        "Program Management",
+        "Program Strategy",
+        "Roadmapping",
+        "Portfolio Management",
+        "Benefits Realization",
+        "Dependency Management",
+        "Cross-Functional Coordination",
+        "Business Transformation"
+    ],
+
+    "agile_methodologies": [
+        "Agile Project Management",
+        "Scrum",
+        "Kanban",
+        "SAFe (Scaled Agile Framework)",
+        "Sprint Planning",
+        "Backlog Grooming",
+        "User Story Mapping",
+        "Release Planning",
+        "Daily Standups",
+        "Sprint Reviews",
+        "Retrospectives"
+    ],
+
+    "financial_delivery_management": [
+        "Budget Planning",
+        "Cost Control",
+        "Financial Forecasting",
+        "Resource Allocation",
+        "Resource Optimization",
+        "Earned Value Management (EVM)",
+        "ROI Analysis",
+        "Vendor Management",
+        "Procurement Management"
+    ],
+
+    "risk_quality_management": [
+        "Risk Assessment",
+        "Risk Mitigation",
+        "Issue Resolution",
+        "Escalation Management",
+        "Quality Assurance (QA)",
+        "Compliance Management",
+        "Audit Readiness",
+        "Process Improvement",
+        "Lean",
+        "Six Sigma"
+    ],
+
+    "leadership_stakeholder_management": [
+        "Stakeholder Communication",
+        "Executive Reporting",
+        "Dashboard Reporting",
+        "Team Leadership",
+        "Conflict Resolution",
+        "Decision Making",
+        "Negotiation",
+        "Influence Without Authority"
+    ],
+
+    "tools": [
+        "Microsoft Project",
+        "Jira",
+        "Jira Align",
+        "Asana",
+        "Trello",
+        "Smartsheet",
+        "Monday.com",
+        "Microsoft Teams",
+        "Slack",
+        "Confluence",
+        "SharePoint",
+        "Power BI",
+        "Tableau",
+        "Advanced Excel"
+    ],
+
+    "technical_domain": [
+        "SDLC",
+        "Agile SDLC",
+        "Cloud Projects (Azure, AWS)",
+        "DevOps Coordination",
+        "API Integration",
+        "Digital Transformation"
+    ],
+
+    "certifications_keywords": [
+        "PMP",
+        "PRINCE2",
+        "Certified Scrum Master (CSM)",
+        "PMI-ACP",
+        "SAFe Agilist",
+        "Lean Six Sigma"
+    ]
+}
     
 ]
 
