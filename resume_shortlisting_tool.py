@@ -474,18 +474,12 @@ def match_skills(jd_db, resume_text):
     skill_lower = skill.lower()
     skill_norm = normalize(skill)
 
-    # ✅ 1. Handle "C" first (special case)
-    if skill_lower == "c":
-    if re.search(r'\bc\b', resume_text):
-    matched.add(skill)
-    continue
-
-    # ✅ 2. Token match (safe)
-    if len(skill_lower) > 1 and skill_lower in resume_words:
+    # ✅ ✅ 1. Exact token match (prevents substring bugs)
+    if skill_lower in resume_words:
     matched.add(skill)
     continue
         
-    # ✅ ✅ 3. Safe regex match (handles c++, node.js, etc.)
+    # ✅ ✅ 2. Safe regex match (handles c++, node.js, etc.)
     pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
     if re.search(pattern, resume_text):
     matched.add(skill)
