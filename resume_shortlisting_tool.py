@@ -102,7 +102,7 @@ DOMAIN_SKILLS = [
     "json", "xml", "xsd",
 
     # Workflow
-    "bpml", "business processes", "routing rules", "Data Dictionary", "Enhancement",
+    "bpml", "business processes", "routing rules", "Enhancement",
 
     # Protocols
     "as2", "as3", "sftp", "ftps", "http/https", "cifs", "webdav",
