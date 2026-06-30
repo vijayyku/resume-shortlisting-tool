@@ -854,6 +854,7 @@ for skill in jd_db:
     percent = min(100, (len(matched) / len(jd_db)) * 120) if jd_db else 0
 
 return matched, missing, percent
+
 # =========================
 # 🎯 SEMANTIC MATCH
 # =========================
