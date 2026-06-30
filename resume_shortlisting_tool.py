@@ -542,9 +542,9 @@ def extract_experience(text):
 # =========================
 def evaluate(sim, skill_pct, jd_exp, res_exp,
              missing_critical_skills=0,
-             skill_weight=0.7,
+             skill_weight=0.8,
              sim_weight=0.1,
-             exp_weight=0.2):
+             exp_weight=0.1):
 
     
     # ✅ Convert safely (VERY IMPORTANT FIX)
