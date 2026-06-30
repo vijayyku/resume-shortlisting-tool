@@ -482,7 +482,7 @@ def match_skills(jd_db, resume_text):
         skill_norm = normalize(skill)
 
         # ✅ ✅ 1. Exact token match (prevents substring bugs)
-        if skill_lower in resume_words:
+    if skill_lower in resume_words:
         #added code on 30-june-2026    
     if len(skill_lower) == 1:
         # ensure it appears as a whole word in original text
