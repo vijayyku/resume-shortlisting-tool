@@ -64,8 +64,9 @@ DOMAIN_SKILLS = [
    "frontend development", "backend development", "full stack development",
    "responsive design", "cross-browser compatibility",
 
-   "web security", "cors", "xss", "csrf",
-   "session management", "cookies",
+   "web security", "cors", "xss", "csrf", "Multi-threading", "Data Structures (Collection framework)", 
+   "session management", "cookies", "Exception Handling", "Reactive Programming", "Hibernate", "GitHub",
+    "PostgreSQL", "Junit and Mockito", "SQL and Oracle Database",
 
    "webpack", "vite", "babel",
    "npm", "yarn",
