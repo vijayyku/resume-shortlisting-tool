@@ -482,9 +482,9 @@ def match_skills(jd_db, resume_text):
         skill_norm = normalize(skill)
 
         # ✅ ✅ 1. Exact token match (prevents substring bugs)
-        if skill_lower in resume_words:
-        matched.add(skill)
-        continue
+    if skill_lower in resume_words:
+    matched.add(skill)
+    continue
 
         # ✅ ✅ 2. Safe regex match (handles c++, node.js, etc.)
         pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
