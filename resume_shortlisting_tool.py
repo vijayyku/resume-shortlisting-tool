@@ -102,7 +102,7 @@ DOMAIN_SKILLS = [
     "json", "xml", "xsd",
 
     # Workflow
-    "bpml", "business processes", "routing rules",
+    "bpml", "business processes", "routing rules", "Data Dictionary", "Enhancement",
 
     # Protocols
     "as2", "as3", "sftp", "ftps", "http/https", "cifs", "webdav",
@@ -205,7 +205,7 @@ DOMAIN_SKILLS = [
 "oracle pl/sql", "oracle fusion", "SAP UI5 framework",
 "ms dynamics crm development", "x++",
 "erp customization", "erp integration", "Object-Oriented Programming", "oops",
-"Adobe Forms", "Workflow", "BADI", "BAPIs", "User exits", "RAP (Restful ABAP Programming)", "RAP",
+"Adobe Forms", "Workflow", "BADI", "BAPIs", "User exits", "User exit", "RAP (Restful ABAP Programming)", "RAP",
 "SAP Business Technology Platform", "SAP BTP",
 
 # =========================
@@ -213,7 +213,8 @@ DOMAIN_SKILLS = [
 # =========================
 "idoc", "bapi", "rfc", "odata", "soap", "rest api",
 "mule soft", "boomi", "sap pi", "sap po", "cpi",
-"integration suite", "api management",
+"integration suite", "api management", "reports", "module pool program", "BDC", "LSMW",
+"function module", "data dictionary", "enhancement", "script", "smartforms", "cds view", "AMDP",  
 
 # =========================
 # ☁️ CLOUD ERP & MODERN ERP
