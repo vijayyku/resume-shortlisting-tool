@@ -815,8 +815,7 @@ def match_skills(jd_db, resume_text):
 
     matched = set()
 
-
-    for skill in jd_db:
+for skill in jd_db:
     skill_lower = skill.lower()
     skill_norm = normalize(skill)
 
@@ -854,7 +853,7 @@ def match_skills(jd_db, resume_text):
     # ✅ Percentage
     percent = min(100, (len(matched) / len(jd_db)) * 120) if jd_db else 0
 
-    return matched, missing, percent
+return matched, missing, percent
 # =========================
 # 🎯 SEMANTIC MATCH
 # =========================
