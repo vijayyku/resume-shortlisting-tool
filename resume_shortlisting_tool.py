@@ -447,7 +447,7 @@ def match_skills(jd_db, resume_text):
         "cds view": ["cds views", "core data services", "CDS view"],
         "function module": ["Function Module", "Function Modules", "Function module"],
         "user exit": ["User Exits", "user exits", "user exit", "User Exit", "User exit", "user Exit"], 
-        "Adobe Forms": ["ADOBE forms", "Adobe Forms", "Adobe/Smart forms"],
+        "adobe forms": ["ADOBE forms", "Adobe Forms", "Adobe/Smart forms"],
         "data dictionary": ["Data Dictionary", "Data dictionary", "data Dictionary"],
         "module pool program": ["Module Pool Program", "Module Pool"],
         "git": ["version control", "github"],
