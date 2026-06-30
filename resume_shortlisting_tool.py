@@ -85,7 +85,7 @@ DOMAIN_SKILLS = [
    "api testing", "postman", "rest assured", "soap ui",
    "unit testing", "integration testing", "end-to-end testing",
 
-   "jest", "mocha", "chai", "junit", "testng",
+   "jest", "mocha", "chai", "junit", "testng", "Mockito",
 
    "bdd", "cucumber", "gherkin", "pytest", "testng",
 
