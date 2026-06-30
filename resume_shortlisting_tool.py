@@ -61,6 +61,8 @@ DOMAIN_SKILLS = [
     "classic autosar",
     "adaptive autosar",
     "davinci",
+    "Data-Structures (Collection framework)",
+    "data structures",
     # All RTOS
     "FreeRTOS",
     "VxWorks",
