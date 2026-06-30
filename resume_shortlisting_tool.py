@@ -217,7 +217,7 @@ DOMAIN_SKILLS = [
 # =========================
 # ☁️ CLOUD ERP & MODERN ERP
 # =========================
-"sap s4hana", "s4 hana cloud", "oracle cloud erp",
+"s4 hana cloud", "oracle cloud erp",
 "dynamics 365 cloud", "netsuite cloud",
 "cloud migration", "erp transformation",
 
