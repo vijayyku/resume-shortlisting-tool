@@ -488,9 +488,9 @@ def match_skills(jd_db, resume_text):
         # ensure it appears as a whole word in original text
         if re.search(rf'\b{re.escape(skill_lower)}\b', resume_text.lower()):
         matched.add(skill)
-        else
+    else:
         matched.add(skill)
-        continue
+    continue
 
         # ✅ ✅ 2. Safe regex match (handles c++, node.js, etc.)
         pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
