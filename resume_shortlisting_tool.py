@@ -448,6 +448,8 @@ def match_skills(jd_db, resume_text):
         "function module": ["Function Module", "Function Modules", "Function module"],
         "user exit": ["User Exits", "user exits", "user exit", "User Exit", "User exit", "user Exit"], 
         "Adobe Forms": ["ADOBE forms", "Adobe Forms", "Adobe/Smart forms"],
+        "data dictionary": ["Data Dictionary", "Data dictionary", "data Dictionary"],
+        "module pool program": ["Module Pool Program", "Module Pool"],
         "git": ["version control", "github"],
         "html5": ["html"],
         "css": ["css3"],
