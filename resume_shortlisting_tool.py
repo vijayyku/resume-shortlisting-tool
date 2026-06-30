@@ -200,11 +200,11 @@ DOMAIN_SKILLS = [
 # 🏢 ERP TECHNICAL
 # =========================
 "sap abap", "abap", "sap hana", "s4hana", "sap bw", "sap bo",
-"sap fiori", "sap ui5", "sap basis", "SAP UX", "SAP UX", "SAP UX XML",
+"sap fiori", "sap basis", "SAP UX", "SAP UX", "SAP UX XML",
 "oracle pl/sql", "oracle fusion", "SAP UI5 framework",
 "ms dynamics crm development", "x++",
 "erp customization", "erp integration", "Object-Oriented Programming", "oops",
-"Adobe Forms", "Workflow", "BADI","IDOC", "BAPIs", "User exits", "RAP (Restful ABAP Programming)", "RAP",
+"Adobe Forms", "Workflow", "BADI", "BAPIs", "User exits", "RAP (Restful ABAP Programming)", "RAP",
 "SAP Business Technology Platform", "SAP BTP",
 
 # =========================
