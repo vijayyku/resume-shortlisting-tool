@@ -180,7 +180,7 @@ DOMAIN_SKILLS = [
     "GitHub",
     "PostgreSQL",
     "Junit and Mockito",
-    "SQL and Oracle Database",
+    "SQL and Oracle Database", "Oracle Database",
     "webpack",
     "vite",
     "babel",
