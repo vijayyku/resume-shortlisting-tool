@@ -214,7 +214,7 @@ DOMAIN_SKILLS = [
 "idoc", "bapi", "rfc", "odata", "soap", "rest api",
 "mule soft", "boomi", "sap pi", "sap po", "cpi",
 "integration suite", "api management", "reports", "module pool program", "BDC", "LSMW",
-"function module", "data dictionary", "enhancement", "script", "smartforms", "cds view", "AMDP",  
+"Function module", "data dictionary", "enhancement", "script", "smartforms", "cds view", "AMDP",  
 
 # =========================
 # ☁️ CLOUD ERP & MODERN ERP
