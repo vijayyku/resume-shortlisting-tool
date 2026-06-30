@@ -173,7 +173,7 @@ DOMAIN_SKILLS = [
     "xss",
     "csrf",
     "Multi-threading",
-    "Data Structures (Collection framework)",
+    "Data-Structures (Collection framework)",
     "session management",
     "cookies",
     "Exception Handling",
