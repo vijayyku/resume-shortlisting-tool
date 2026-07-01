@@ -11,7 +11,7 @@ st.set_page_config(layout="wide")
 col1, col2 = st.columns([1, 6])
 
 with col1:
-    st.image("iBridge.png", width=60)
+    st.image("iBridge.png", width=200)
 
 with col2:
     st.markdown("## Enterprise ATS - JD Driven Skill Matching")
