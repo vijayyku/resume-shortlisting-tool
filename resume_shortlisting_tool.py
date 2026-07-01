@@ -12,7 +12,7 @@ st.set_page_config(layout="wide")
 col1, col2 = st.columns([1, 6])
 
 with col1:
-    st.image("iBridge emoji.png", width=10)
+    st.image("iBridge emoji.png", width=200)
 
 with col2:
     st.title("Enterprise ATS - JD Driven Skill Matching")
