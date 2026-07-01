@@ -6,7 +6,11 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 st.set_page_config(layout="wide")
-st.title("🏢 Enterprise ATS - JD Driven Skill Matching")
+#st.title("🏢 Enterprise ATS - JD Driven Skill Matching")
+
+st.image("logo.png", width=80)
+st.title("Enterprise ATS - JD Driven Skill Matching")
+
 
 # =========================
 # ✅ DOMAIN SKILL LIBRARY (ENTERPRISE)
