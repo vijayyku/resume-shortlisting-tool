@@ -8,8 +8,13 @@ from sklearn.metrics.pairwise import cosine_similarity
 st.set_page_config(layout="wide")
 #st.title("🏢 Enterprise ATS - JD Driven Skill Matching")
 
-st.image("iBridge.png", width=400)
-st.title("Enterprise ATS - JD Driven Skill Matching")
+col1, col2 = st.columns([1, 6])
+
+with col1:
+    st.image("iBridge.png", width=60)
+
+with col2:
+    st.markdown("## Enterprise ATS - JD Driven Skill Matching")
 
 
 # =========================
