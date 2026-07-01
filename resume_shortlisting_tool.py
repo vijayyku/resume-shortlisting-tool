@@ -10,7 +10,7 @@ st.set_page_config(layout="wide")
 
 st.markdown("""
     <div style="display:flex; align-items:center;">
-        <img src="iBridge.png" width="60" style="margin-right:15px;">
+        <img src="iBridge emoji.png" width="60" style="margin-right:15px;">
         <h2 style="margin:0;">Enterprise ATS - JD Driven Skill Matching</h2>
     </div>
 """, unsafe_allow_html=True)
