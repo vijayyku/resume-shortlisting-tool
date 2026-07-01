@@ -470,7 +470,6 @@ DOMAIN_SKILLS = [
     "rfc",
     "odata",
     "soap",
-    "rest api",
     "mule soft",
     "boomi",
     "sap pi",
