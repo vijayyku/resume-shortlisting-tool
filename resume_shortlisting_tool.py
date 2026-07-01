@@ -26,7 +26,7 @@ DOMAIN_SKILLS = [
     "spring boot",
     "jdbc",
     "sql",
-    "mysql",
+    "MySQL",
     "rest",
     "python",
     "c",
