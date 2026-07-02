@@ -579,7 +579,7 @@ DOMAIN_SKILLS = [
     "SAPS/4HANA","ABAP S/4 HANA",
     "SAP S/4 HANA Retail",
     "S/4HANA", "ABAP S/4HANA",
-    "S/4 HANA","SAP HANA",
+    "SAP HANA",
     "SAPUI5",
     "SAP BRIM (Billing and Revenue Innovation Management)",
     # Core Financials (FI-CA)
