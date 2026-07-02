@@ -130,207 +130,58 @@ DOMAIN_SKILLS = [
 # =========================
 # 🔗 ERP INTEGRATION & MIDDLEWARE
 # =========================
-    "idoc", "bapi", "rfc", "odata", "soap", "mule soft", "boomi", "sap pi", "sap po", "cpi",
-    "integration suite",
-    "api management",
-    "reports",
-    "module pool program",
-    "BDC",
-    "LSMW",
-    "Function module",
-    "data dictionary",
-    "enhancement",
-    "script",
-    "smartforms",
-    "cds view",
-    "AMDP",
-    # =========================
-    # ☁️ CLOUD ERP & MODERN ERP
-    # =========================
-    "s4 hana cloud",
-    "oracle cloud erp",
-    "dynamics 365 cloud",
-    "netsuite cloud",
-    "cloud migration",
-    "erp transformation",
-    # =========================
-    # 🤖 AUTOMATION IN ERP (NEW AGE)
-    # =========================
-    "rpa",
-    "uipath",
-    "automation anywhere",
-    "blue prism",
-    "intelligent automation",
-    "workflow automation",
-    "process mining",
-    "celonis",
+    "idoc", "bapi", "rfc", "odata", "soap", "mule soft", "boomi", "sap pi", "sap po", "cpi", "integration suite", "api management", "reports", "module pool program",
+    "BDC", "LSMW", "Function module", "data dictionary", "enhancement", "script", "smartforms", "cds view", "AMDP", 
+# =========================
+# ☁️ CLOUD ERP & MODERN ERP
+# =========================
+    "s4 hana cloud", "oracle cloud erp", "dynamics 365 cloud", "netsuite cloud", "cloud migration", "erp transformation",
+# =========================
+# 🤖 AUTOMATION IN ERP (NEW AGE)
+# =========================
+    "rpa", "uipath", "automation anywhere", "blue prism", "intelligent automation", "workflow automation", "process mining", "celonis",
     "tosca",
-    # =========================
-    # 📊 ERP ANALYTICS & REPORTING
-    # =========================
-    "sap bw hana",
-    "sap analytics cloud",
-    "power bi",
-    "tableau",
-    "data visualization",
-    "financial reporting",
-    "dashboarding",
-    # =========================
-    # 🔄 ERP IMPLEMENTATION LIFECYCLE
-    # =========================
-    "erp implementation",
-    "erp rollout",
-    "erp migration",
-    "greenfield implementation",
-    "brownfield implementation",
-    "blueprint",
-    "gap analysis",
-    "business process mapping",
-    "fit gap analysis",
-    "uat",
-    "cutover",
-    "go live support",
-    # =========================
-    # 🔐 ERP SECURITY
-    # =========================
-    "sap security",
-    "roles and authorization",
-    "identity access management",
-    "gRC",
-    "sox compliance",
-    # =========================
-    # 📊 DATA & AI IN ERP (LATEST TREND 🚀)
-    # =========================
-    "embedded analytics",
-    "ai in erp",
-    "predictive analytics",
-    "generative ai",
-    "copilot",
-    "chatbots",
-    "intelligent erp",
-    "machine learning in erp",
-    # =========================
-    # 🧠 SOFT / CONSULTING SKILLS
-    # =========================
-    "stakeholder management",
-    "requirement gathering",
-    "functional consulting",
-    "solution design",
-    "change management",
-    "client communication",
-    # SAP Utilities & Revenue Management
-    "SAP IS-U",
-    "SAP S/4HANA Utilities",
-    "ABAP S/4 HANA",
-    "SAP S/4 HANA Retail",
-    "SAP S/4 HANA",
-    "ABAP S/4HANA",
-    "SAP HANA",
-    "SAPUI5",
-    "SAP BRIM (Billing and Revenue Innovation Management)",
-    # Core Financials (FI-CA)
-    "contract accounting (fi-ca)",
-    "accounts receivable",
-    "dunning",
-    "collections management",
-    "credit management",
-    "dispute management",
-    "cash application",
-    "payment processing",
-    # Billing & Invoicing
-    "billing",
-    "invoicing",
-    "rate determination",
-    "tariff configuration",
-    "bill simulation",
-    "convergent invoicing (ci)",
-    "invoice processing",
-    # project or program management skills
-    "Project Planning",
-    "Project Execution",
-    "Project Lifecycle Management",
-    "Scope Management",
-    "Work Breakdown Structure (WBS)",
-    "Milestone Tracking",
-    "Deliverables Management",
-    "Project Governance",
-    "Change Management",
-    "Issue Management",
-    "Risk Management",
-    "Stakeholder Management",
-    "project management",
-    "Program management",
-    "Program Strategy",
-    "Roadmapping",
-    "Portfolio Management",
-    "Benefits Realization",
-    "Dependency Management",
-    "Cross-Functional Coordination",
-    "Business Transformation",
-    "Agile Project Management",
-    "Scrum",
-    "Kanban",
-    "SAFe (Scaled Agile Framework)",
-    "Sprint Planning",
-    "Backlog Grooming",
-    "User Story Mapping",
-    "Release Planning",
-    "Daily Standups",
-    "Sprint Reviews",
-    "Retrospectives",
-    "Budget Planning",
-    "Cost Control",
-    "Financial Forecasting",
-    "Resource Allocation",
-    "Resource Optimization",
-    "Earned Value Management (EVM)",
-    "ROI Analysis",
-    "Vendor Management",
-    "Procurement Management",
-    "Risk Assessment",
-    "Risk Mitigation",
-    "Issue Resolution",
-    "Escalation Management",
-    "Quality Assurance (QA)",
-    "Compliance Management",
-    "Audit Readiness",
-    "Process Improvement",
-    "Lean",
-    "Six Sigma",
-    "Stakeholder Communication",
-    "Executive Reporting",
-    "Dashboard Reporting",
-    "Team Leadership",
-    "Conflict Resolution",
-    "Decision Making",
-    "Negotiation",
-    "Influence Without Authority",
-    "Microsoft Project",
-    "Jira",
-    "Jira Align",
-    "Asana",
-    "Trello",
-    "Smartsheet",
-    "Monday.com",
-    "Microsoft Teams",
-    "Slack",
-    "Confluence",
-    "SharePoint",
-    "Power BI",
-    "Tableau",
-    "Advanced Excel",
-    "SDLC",
-    "Agile SDLC",
-    "Cloud Projects (Azure, AWS)",
-    "DevOps Coordination",
-    "API Integration",
-    "Digital Transformation",
-    "PMP",
-    "PRINCE2",
-    "Certified Scrum Master (CSM)",
-    "PMI-ACP",
-    "SAFe Agilist",
-    "Lean Six Sigma",
+# =========================
+# 📊 ERP ANALYTICS & REPORTING
+# =========================
+    "sap bw hana", "sap analytics cloud", "power bi", "tableau", "data visualization", "financial reporting", "dashboarding",
+# =========================
+# 🔄 ERP IMPLEMENTATION LIFECYCLE
+# =========================
+    "erp implementation", "erp rollout", "erp migration", "greenfield implementation", "brownfield implementation", "blueprint",
+    "gap analysis", "business process mapping", "fit gap analysis", "uat", "cutover", "go live support",
+# =========================
+# 🔐 ERP SECURITY
+# =========================
+    "sap security", "roles and authorization", "identity access management", "gRC", "sox compliance", 
+# =========================
+# 📊 DATA & AI IN ERP (LATEST TREND 🚀)
+# =========================
+    "embedded analytics", "ai in erp", "predictive analytics", "generative ai", "copilot", "chatbots", "intelligent erp", "machine learning in erp",
+# =========================
+# 🧠 SOFT / CONSULTING SKILLS
+# =========================
+    "stakeholder management", "requirement gathering", "functional consulting", "solution design", "change management", "client communication",
+# SAP Utilities & Revenue Management
+    "SAP IS-U", "SAP S/4HANA Utilities", "ABAP S/4 HANA", "SAP S/4 HANA Retail", "SAP S/4 HANA", "ABAP S/4HANA", "SAP HANA", "SAPUI5", "SAP BRIM (Billing and Revenue Innovation Management)",
+# Core Financials (FI-CA)
+    "contract accounting (fi-ca)", "accounts receivable", "dunning", "collections management", "credit management", "dispute management", "cash application", "payment processing",
+# Billing & Invoicing
+    "billing", "invoicing", "rate determination", "tariff configuration", "bill simulation", "convergent invoicing (ci)", "invoice processing", 
+# project or program management skills
+    "Project Planning", "Project Execution", "Project Lifecycle Management", "Scope Management", "Work Breakdown Structure (WBS)", "Milestone Tracking", "Deliverables Management",
+    "Project Governance", "Change Management", "Issue Management", "Risk Management", "Stakeholder Management", "project management", "Program management", "Program Strategy",
+    "Roadmapping", "Portfolio Management", "Benefits Realization", "Dependency Management", "Cross-Functional Coordination", "Business Transformation", "Agile Project Management",
+    "Scrum", "Kanban", "SAFe (Scaled Agile Framework)", "Sprint Planning", "Backlog Grooming", "User Story Mapping", "Release Planning", "Daily Standups", "Sprint Reviews",
+    "Retrospectives", "Budget Planning", "Cost Control", "Financial Forecasting", "Resource Allocation", "Resource Optimization", "Earned Value Management (EVM)", "ROI Analysis",
+    "Vendor Management", "Procurement Management", "Risk Assessment", "Risk Mitigation", "Issue Resolution", "Escalation Management", "Quality Assurance (QA)", "Compliance Management",
+    "Audit Readiness", "Process Improvement", "Lean", "Six Sigma", "Stakeholder Communication", "Executive Reporting", "Dashboard Reporting", "Team Leadership", "Conflict Resolution",
+    "Decision Making", "Negotiation", "Influence Without Authority", "Microsoft Project", "Jira", "Jira Align", "Asana", "Trello", "Smartsheet", "Monday.com", "Microsoft Teams",
+    "Slack", "Confluence", "SharePoint", "Power BI", "Tableau", "Advanced Excel", "SDLC", "Agile SDLC", "Cloud Projects (Azure, AWS)", "DevOps Coordination", "API Integration",
+    "Digital Transformation", "PMP", "PRINCE2", "Certified Scrum Master (CSM)", "PMI-ACP", "SAFe Agilist", "Lean Six Sigma",
+# Core_Teamcenter
+    "Teamcenter Architecture", "Data Model Management", "Business Objects", "BMIDE", "Organization Management", "Access Manager", "Workflow Designer", "Lifecycle Management",
+    "Classification Management", "Query Builder"
 ]
    
 # =========================
@@ -422,7 +273,7 @@ def match_skills(jd_db, resume_text):
 
     # ✅ Skill synonyms / related skills map
     SKILL_MAP = {
-    "rest api": ["rest apis", "restful", "api", "apis", "integration"],
+        "rest api": ["rest apis", "restful", "api", "apis", "integration"],
         "sap ui5": ["sapui5", "ui5"],
         "javascript": ["js", "java script"],
         "json": ["js object notation"],
@@ -430,12 +281,7 @@ def match_skills(jd_db, resume_text):
         "odata": ["o data", "odata services"],
         "cds view": ["cds views", "core data services", "CDS view"],
         "function module": ["Function Module", "Function Modules", "Function module"],
-        "user exit": ["User Exits", "user exits", 
-            "user exit",
-            "User Exit",
-            "User exit",
-            "user Exit",
-        ],
+        "user exit": ["User Exits", "user exits", "user exit", "User Exit", "User exit", "user Exit"],
         "adobe forms": ["ADOBE forms", "Adobe Forms", "Adobe/Smart forms"],
         "data dictionary": ["Data Dictionary", "Data dictionary", "data Dictionary"],
         "module pool program": ["Module Pool Program", "Module Pool"],
@@ -447,39 +293,13 @@ def match_skills(jd_db, resume_text):
         "c": ["C", "c", "embedded c", "misra c"],
         "c++": ["c++", "c++11", "c++14", "c++17", "misra c++"],
         "capl": ["canoe", "can analyzer", "capl"],
-        "autosar": [
-            "autosar",
-            "autosar bsw",
-            "autosar rte",
-            "autosar com",
-            "autosar mcal",
-            "classic autosar",
-            "adaptive autosar",
-            "davinci",
-        ],
+        "autosar": ["autosar", "autosar bsw", "autosar rte", "autosar com", "autosar mcal", "classic autosar", "adaptive autosar", "davinci"],
         "uds": ["uds", "capl", "python"],
         "can": ["can", "can tp"],
         # ✅ SAP P2P mapping
-        "sap p2p": [
-            "sap p2p",
-            "p2p",
-            "procure to pay",
-            "procurement cycle",
-            "purchase to pay",
-            "accounts payable",
-            "ap",
-            "invoice processing",
-            "vendor invoice",
-            "vendor management",
-            "purchase order",
-            "po processing",
-            "goods receipt",
-            "grn",
-            "3 way matching",
-            "invoice verification",
-            "sap mm",
-            "materials management",
-        ],
+        "sap p2p": ["sap p2p", "p2p", "procure to pay", "procurement cycle", "purchase to pay", "accounts payable", "ap",
+            "invoice processing", "vendor invoice", "vendor management", "purchase order", "po processing", "goods receipt",
+            "grn", "3 way matching", "invoice verification", "sap mm", "materials management"],
         "sap gateway": ["gateway"],
         "ui annotation": ["annotations", "ui annotations"],
         "SAP S/4 HANA": ["SAPS/4 HANA", "SAP S/4HANA", "SAPS/4HANA", "S/4HANA", "SAP S/4 HANA"]
