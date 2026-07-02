@@ -856,54 +856,95 @@ def match_skills(jd_db, resume_text):
         skill_lower = skill.lower()
         skill_norm = normalize(skill)
         
+
+
+        # =====================================================
+        # EXACT SKILLS (C, C++, C#, R, GO)
+        # =====================================================
         if skill_lower in EXACT_SKILLS:
-            pattern = r'(?<![\w])' + re.escape(skill_lower) + r'(?![\w])'
+
+            pattern = (
+                r'(?<![a-zA-Z0-9])'
+                + re.escape(skill_lower)
+                + r'(?![a-zA-Z0-9])'
+            )
+
             if re.search(pattern, resume_text):
                 matched.add(skill)
-            continue      
-        
-        # ✅ Normalized matching FIRST
-        if skill_norm in resume_norm:
-        #if len(skill_norm) > 2 and skill_norm in resume_norm:
-           matched.add(skill)
-           continue
-        
-        # ✅ ✅ 1. Exact token match (prevents substring bugs)
-        if skill_lower in resume_words:
-            if len(skill_norm) > 2 and skill_norm in resume_norm:
+                continue
+
+            for syn in SKILL_MAP.get(skill_lower, []):
+
+                syn_pattern = (
+                    r'(?<![a-zA-Z0-9])'
+                    + re.escape(syn.lower())
+                    + r'(?![a-zA-Z0-9])'
+                )
+
+                if re.search(syn_pattern, resume_text):
+                    matched.add(skill)
+                    break
+
+            continue
+
+        # =====================================================
+        # NORMALIZED MATCH
+        # Skip very short skills
+        # =====================================================
+        if len(skill_norm) > 2 and skill_norm in resume_norm:
             matched.add(skill)
             continue
 
-        # ✅ ✅ 2. Safe regex match (handles c++, node.js, etc.)
-        pattern = r'(?<!\w)' + re.escape(skill_lower) + r'(?!\w)'
+        # =====================================================
+        # EXACT TOKEN MATCH
+        # =====================================================
+        if skill_lower in resume_words:
+            matched.add(skill)
+            continue
+
+        # =====================================================
+        # SAFE REGEX MATCH
+        # =====================================================
+        pattern = (
+            r'(?<![a-zA-Z0-9])'
+            + re.escape(skill_lower)
+            + r'(?![a-zA-Z0-9])'
+        )
+
         if re.search(pattern, resume_text):
             matched.add(skill)
             continue
-            
-       # ✅ 3. Cleaner single-condition version
-       #if len(skill_lower) > 2 and " " in skill_lower and skill_norm in resume_norm:
-        #   matched.add(skill)
-         #  continue
- 
-        # ✅ ✅ 4. Synonym matching
+
+        # =====================================================
+        # SYNONYM MATCHING
+        # =====================================================
         for syn in SKILL_MAP.get(skill_lower, []):
+
+            syn_lower = syn.lower()
             syn_norm = normalize(syn)
 
+            syn_pattern = (
+                r'(?<![a-zA-Z0-9])'
+                + re.escape(syn_lower)
+                + r'(?![a-zA-Z0-9])'
+            )
+
             if (
-                syn in resume_words or
-                re.search(r'(?<!\w)' + re.escape(syn) + r'(?!\w)', resume_text) or
-                syn_norm in resume_norm
+                syn_lower in resume_words
+                or re.search(syn_pattern, resume_text)
+                or (len(syn_norm) > 2 and syn_norm in resume_norm)
             ):
                 matched.add(skill)
                 break
 
-    # ✅ Missing skills
     missing = [skill for skill in jd_db if skill not in matched]
 
-    # ✅ Percentage
-    percent = min(100, (len(matched) / len(jd_db)) * 120) if jd_db else 0
+    percent = (
+        min(100, (len(matched) / len(jd_db)) * 120)
+        if jd_db else 0
+    )
 
-    return matched, missing, percent
+return matched, missing, percent   
 
 # =========================
 # 🎯 SEMANTIC MATCH
