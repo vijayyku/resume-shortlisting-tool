@@ -870,6 +870,7 @@ def match_skills(jd_db, resume_text):
         
         # ✅ ✅ 1. Exact token match (prevents substring bugs)
         if skill_lower in resume_words:
+            if len(skill_norm) > 2 and skill_norm in resume_norm:
             matched.add(skill)
             continue
 
