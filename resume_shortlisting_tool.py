@@ -741,7 +741,25 @@ def build_skill_database(jd_text):
                 detected.add(skill)
 
     return list(detected)
-    
+# =============================
+# ✅ BUILD SKILL Normalization
+# ============================
+def normalize(text):
+    text = text.lower().strip()
+
+    replacements = {
+        "sap s/4 hana": "s4hana",
+        "sap s/4hana": "s4hana",
+        "s/4 hana": "s4hana",
+        "s/4hana": "s4hana",
+        "s4 hana": "s4hana",
+        "sap abap": "abap"
+    }
+
+    text = replacements.get(text, text)
+
+    return text
+
 # =========================
 # ✅ MATCH SKILLS
 # =========================
@@ -827,7 +845,12 @@ def match_skills(jd_db, resume_text):
     for skill in jd_db:
         skill_lower = skill.lower()
         skill_norm = normalize(skill)
-
+        
+        # ✅ Normalized matching FIRST
+        if skill_norm in resume_norm:
+           matched.add(skill)
+           continue
+        
         # ✅ ✅ 1. Exact token match (prevents substring bugs)
         if skill_lower in resume_words:
             matched.add(skill)
