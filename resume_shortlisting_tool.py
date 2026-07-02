@@ -855,12 +855,16 @@ def match_skills(jd_db, resume_text):
     for skill in jd_db:
         skill_lower = skill.lower()
         skill_norm = normalize(skill)
-
         
+        if skill_lower in EXACT_SKILLS:
+            pattern = r'(?<![\w])' + re.escape(skill_lower) + r'(?![\w])'
+            if re.search(pattern, resume_text):
+                matched.add(skill)
+            continue      
         
         # ✅ Normalized matching FIRST
-        #if skill_norm in resume_norm:
-        if len(skill_norm) > 2 and skill_norm in resume_norm:
+        if skill_norm in resume_norm:
+        #if len(skill_norm) > 2 and skill_norm in resume_norm:
            matched.add(skill)
            continue
         
