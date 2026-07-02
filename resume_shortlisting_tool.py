@@ -838,16 +838,29 @@ def match_skills(jd_db, resume_text):
         "sap gateway": ["gateway"],
         "ui annotation": ["annotations", "ui annotations"],
         "SAP S/4 HANA": ["SAPS/4 HANA", "SAP S/4HANA", "SAPS/4HANA", "S/4HANA", "SAP S/4 HANA"]
-    } 
+    }
 
+    # ✅ Exact skill match
+    
+    EXACT_SKILLS = {
+    "c",
+    "c++",
+    "c#",
+    "r",
+    "go"
+    }
+  
     matched = set()
     
     for skill in jd_db:
         skill_lower = skill.lower()
         skill_norm = normalize(skill)
+
+        
         
         # ✅ Normalized matching FIRST
-        if skill_norm in resume_norm:
+        #if skill_norm in resume_norm:
+        if len(skill_norm) > 2 and skill_norm in resume_norm:
            matched.add(skill)
            continue
         
