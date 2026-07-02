@@ -820,7 +820,7 @@ def match_skills(jd_db, resume_text):
         ],
         "sap gateway": ["gateway"],
         "ui annotation": ["annotations", "ui annotations"],
-        "S/4HANA": ["SAP S/4 HANA", "SAP S/4HANA", "SAPS/4HANA", "S/4HANA"]
+        "SAP S/4 HANA": ["SAPS/4 HANA", "SAP S/4HANA", "SAPS/4HANA", "S/4HANA"]
     } 
 
     matched = set()
