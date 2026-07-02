@@ -385,7 +385,7 @@ DOMAIN_SKILLS = [
     # =========================
     "erp",
     "enterprise resource planning",
-    "sap",
+    "sap erp",
     "oracle erp",
     "microsoft dynamics",
     "dynamics 365",
@@ -579,7 +579,7 @@ DOMAIN_SKILLS = [
     "ABAP S/4 HANA",
     "SAP S/4 HANA Retail",
     "SAP S/4 HANA",
-    "S/4HANA", "ABAP S/4HANA",
+    "ABAP S/4HANA",
     "SAP HANA",
     "SAPUI5",
     "SAP BRIM (Billing and Revenue Innovation Management)",
