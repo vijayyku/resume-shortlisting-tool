@@ -576,8 +576,9 @@ DOMAIN_SKILLS = [
     # SAP Utilities & Revenue Management
     "SAP IS-U",
     "SAP S/4HANA Utilities",
-    "SAPS/4HANA","ABAP S/4 HANA",
+    "ABAP S/4 HANA",
     "SAP S/4 HANA Retail",
+    "SAP S/4 HANA",
     "S/4HANA", "ABAP S/4HANA",
     "SAP HANA",
     "SAPUI5",
