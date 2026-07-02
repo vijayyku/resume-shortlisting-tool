@@ -576,9 +576,10 @@ DOMAIN_SKILLS = [
     # SAP Utilities & Revenue Management
     "SAP IS-U",
     "SAP S/4HANA Utilities",
-    "SAPS/4HANA",
+    "SAPS/4HANA","ABAP S/4 HANA",
     "SAP S/4 HANA Retail",
-    "S/4HANA",
+    "S/4HANA", "ABAP S/4HANA",
+    "S/4 HANA","SAP HANA",
     "SAPUI5",
     "SAP BRIM (Billing and Revenue Innovation Management)",
     # Core Financials (FI-CA)
@@ -814,9 +815,11 @@ def match_skills(jd_db, resume_text):
             "invoice verification",
             "sap mm",
             "materials management",
+            
         ],
         "sap gateway": ["gateway"],
         "ui annotation": ["annotations", "ui annotations"],
+        "Sap S/4Hana": ["SAP S/4 HANA", "SAP S/4HANA", "SAPS/4HANA", "S/4HANA"]
     } 
 
     matched = set()
