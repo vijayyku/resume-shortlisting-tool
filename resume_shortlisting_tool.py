@@ -370,12 +370,31 @@ def normalize(text):
     text = text.lower().strip()
 
     replacements = {
+        # SAP normalization
         "sap s/4 hana": "s4hana",
         "sap s/4hana": "s4hana",
         "s/4 hana": "s4hana",
         "s/4hana": "s4hana",
         "s4 hana": "s4hana",
-        "sap abap": "abap"
+        "sap abap": "abap",
+        
+        # Artificial Intelligence normalization
+        "ai": "artificial intelligence",
+        "artificial intelligence (ai)": "artificial intelligence",
+        "artificial-intelligence": "artificial intelligence",
+
+        # Machine Learning normalization
+        "ml": "machine learning",
+        "machine-learning": "machine learning",
+        "machine learning (ml)": "machine learning",
+
+        # Related AI/ML terms
+        "gen ai": "generative ai",
+        "genai": "generative ai",
+        "nlp": "natural language processing",
+        "llm": "large language models",
+        "llms": "large language models"
+
     }
 
     text = replacements.get(text, text)
