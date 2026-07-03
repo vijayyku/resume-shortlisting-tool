@@ -196,7 +196,7 @@ DOMAIN_SKILLS = [
     # =========================
     # DATA SCIENCE / AI / ML
     # =========================
-    "Artificial Intelligence", "Machine Learning", "Deep Learning", "Natural Language Processing", "NLP",
+    "Artificial Intelligence", "AI", "Machine Learning", "ML", "Deep Learning", "Natural Language Processing", "NLP",
     "Computer Vision", "LLM", "Large Language Models", "Prompt Engineering", "RAG", "Retrieval Augmented Generation",
     "Vector Database", "Vector Search", "LangChain", "LangGraph", "LlamaIndex", "OpenAI", "Azure OpenAI", "Amazon Bedrock",
     "Vertex AI", "TensorFlow", "PyTorch", "Keras", "Scikit-learn", "XGBoost", "LightGBM", "MLOps", "MLflow", "Feature Engineering",
