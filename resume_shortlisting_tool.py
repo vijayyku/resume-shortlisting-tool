@@ -447,7 +447,42 @@ def match_skills(jd_db, resume_text):
             "grn", "3 way matching", "invoice verification", "sap mm", "materials management"],
         "sap gateway": ["gateway"],
         "ui annotation": ["annotations", "ui annotations"],
-        "SAP S/4 HANA": ["SAPS/4 HANA", "SAP S/4HANA", "SAPS/4HANA", "S/4HANA", "SAP S/4 HANA"]
+        "SAP S/4 HANA": ["SAPS/4 HANA", "SAP S/4HANA", "SAPS/4HANA", "S/4HANA", "SAP S/4 HANA"],
+        
+       # AI / ML mappings
+       "artificial intelligence": [
+       "ai",
+       "artificial intelligence",
+       "artificial intelligence (ai)",
+       "artificial-intelligence"
+       ],
+
+       "machine learning": [
+       "ml",
+       "machine learning",
+       "machine learning (ml)",
+       "machine-learning"
+       ],
+
+       "generative ai": [
+       "gen ai",
+       "genai",
+       "generative ai",
+       "generative artificial intelligence"
+       ],
+
+       "natural language processing": [
+       "nlp",
+       "natural language processing"
+       ],
+
+       "large language models": [
+       "llm",
+       "llms",
+       "large language model",
+       "large language models"
+       ]  
+
     } 
 
     matched = set()
