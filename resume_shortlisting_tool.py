@@ -666,8 +666,29 @@ if st.button("🚀 Run ATS"):
         df = pd.DataFrame(results).sort_values(by="Score", ascending=False)
 
         st.subheader("🏆 Ranking")
-        st.dataframe(df, hide_index=True)
-
+        #st.dataframe(df, hide_index=True)
+                
+       st.dataframe(
+       df,
+       hide_index=True,
+       use_container_width=True,
+       height=600,
+       column_config={
+       "Matched Skills": st.column_config.TextColumn(
+            "Matched Skills",
+            width="large"
+        ),
+      "Missing Skills": st.column_config.TextColumn(
+            "Missing Skills",
+            width="large"
+        ),
+       "Profile Summary": st.column_config.TextColumn(
+            "Profile Summary",
+            width="large"
+        )
+      }
+    )
+ 
         # Download
         csv = df.to_csv(index=False).encode("utf-8")
         st.download_button("📥 Download", csv, "ATS_Report.csv")
