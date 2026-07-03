@@ -179,9 +179,135 @@ DOMAIN_SKILLS = [
     "Decision Making", "Negotiation", "Influence Without Authority", "Microsoft Project", "Jira", "Jira Align", "Asana", "Trello", "Smartsheet", "Monday.com", "Microsoft Teams",
     "Slack", "Confluence", "SharePoint", "Power BI", "Tableau", "Advanced Excel", "SDLC", "Agile SDLC", "Cloud Projects (Azure, AWS)", "DevOps Coordination", "API Integration",
     "Digital Transformation", "PMP", "PRINCE2", "Certified Scrum Master (CSM)", "PMI-ACP", "SAFe Agilist", "Lean Six Sigma",
-# Core_Teamcenter
+    
+    # Core_Teamcenter
     "Teamcenter Architecture", "Data Model Management", "Business Objects", "BMIDE", "Organization Management", "Access Manager", "Workflow Designer", "Lifecycle Management",
-    "Classification Management", "Query Builder"
+    "Classification Management", "Query Builder",
+    
+    # =========================
+    # DATA ENGINEERING
+    # =========================
+    "Apache Spark", "PySpark", "Hadoop", "Hive", "Impala", "Presto", "Trino", "Databricks", "Delta Lake",
+    "Snowflake", "Amazon Redshift", "Google BigQuery", "Azure Data Factory", "Apache Airflow", "Apache NiFi",
+    "Kafka Streams", "Amazon Kinesis", "ETL", "ELT", "Data Warehousing", "Data Lake", "Lakehouse", "Data Modeling",
+    "Dimensional Modeling", "Star Schema", "Data Governance", "Master Data Management", "MDM", "Informatica",
+    "Talend", "SSIS", "Alteryx", "dbt",
+
+    # =========================
+    # DATA SCIENCE / AI / ML
+    # =========================
+    "Artificial Intelligence", "Machine Learning", "Deep Learning", "Natural Language Processing", "NLP",
+    "Computer Vision", "LLM", "Large Language Models", "Prompt Engineering", "RAG", "Retrieval Augmented Generation",
+    "Vector Database", "Vector Search", "LangChain", "LangGraph", "LlamaIndex", "OpenAI", "Azure OpenAI", "Amazon Bedrock",
+    "Vertex AI", "TensorFlow", "PyTorch", "Keras", "Scikit-learn", "XGBoost", "LightGBM", "MLOps", "MLflow", "Feature Engineering",
+    "Model Deployment", "Model Monitoring", "Fine Tuning", "AI Agents", "CrewAI", "AutoGen", "Semantic Kernel",
+    "Hugging Face", "Pandas", "NumPy", "Matplotlib", "Seaborn",
+
+    # =========================
+    # CYBER SECURITY
+    # =========================
+    "Cyber Security", "Information Security", "Network Security", "Application Security", "DevSecOps", "Penetration Testing",
+    "Vulnerability Assessment", "Ethical Hacking", "SOC", "SIEM", "Splunk", "IBM QRadar", "Microsoft Sentinel",
+    "CrowdStrike", "Palo Alto", "Fortinet", "Check Point", "Zero Trust", "PAM", "SSO", "MFA", "CyberArk", "Okta",
+    "Threat Hunting", "Incident Response", "Digital Forensics", "PKI", "Encryption", "OWASP", "SAST", "DAST",
+    "Security Testing",
+
+    # =========================
+    # DEVOPS / SRE
+    # =========================
+    "Ansible", "Chef", "Puppet", "ArgoCD", "GitOps", "FluxCD", "HashiCorp Vault", "Consul", "Prometheus", "Grafana",
+    "ELK Stack", "ElasticSearch", "Logstash", "Kibana", "Dynatrace", "Datadog", "New Relic", "OpenTelemetry",
+    "JFrog Artifactory", "Nexus Repository", "Harness", "Spinnaker", "Tekton", "Istio", "Linkerd", "Service Mesh",
+    "Site Reliability Engineering", "SRE", "Observability",
+
+    # =========================
+    # DATABASES
+    # =========================
+    "Oracle", "Microsoft SQL Server", "DB2", "MariaDB", "Cassandra", "Couchbase", "Redis", "Neo4j", "Cosmos DB",
+    "T-SQL", "PL/SQL", "Stored Procedures", "Triggers", "Replication", "Partitioning", "Sharding", "Database Administration",
+    "Database Performance Tuning",
+
+    # =========================
+    # BUSINESS INTELLIGENCE
+    # =========================
+    "Microsoft Fabric", "Power Query", "DAX", "SSRS", "SSAS", "Looker", "Looker Studio", "Qlik Sense", "QlikView",
+    "MicroStrategy", "SAP BusinessObjects", "Cognos", "OBIEE", "Business Analytics", "KPI Development", "Dashboard Design",
+
+    # =========================
+    # SALESFORCE
+    # =========================
+    "Salesforce CRM", "Sales Cloud", "Service Cloud", "Experience Cloud", "Marketing Cloud", "Commerce Cloud",
+    "Salesforce CPQ", "Apex", "Lightning Web Components", "LWC", "SOQL", "SOSL", "Salesforce Administration",
+    "Salesforce Development", "Salesforce Integration",
+
+    # =========================
+    # SERVICENOW
+    # =========================
+    "ServiceNow", "ITSM", "ITOM", "ITBM", "CMDB", "Service Catalog", "Incident Management", "Service Portal",
+    "Flow Designer", "IntegrationHub",
+
+    # =========================
+    # MICROSOFT STACK
+    # =========================
+    ".NET Core", "ASP.NET", "ASP.NET Core", "ASP.NET MVC", "Entity Framework", "LINQ", "WPF", "WinForms",
+    "Blazor", "Power Apps", "Power Automate", "Power Platform", "Power Pages", "Dataverse", "Microsoft 365",
+    "SharePoint Online", "Teams Development", "Copilot Studio",
+
+    # =========================
+    # MOBILE DEVELOPMENT
+    # =========================
+    "Flutter", "React Native", "Xamarin", "Jetpack Compose", "Android SDK", "Kotlin Multiplatform", "SwiftUI",
+    "Objective-C", "Firebase", "Mobile Testing", "App Store Deployment", "Google Play Console",
+
+    # =========================
+    # QA / SDET
+    # =========================
+    "SDET", "Appium", "Robot Framework", "Karate", "SpecFlow", "BrowserStack", "Sauce Labs", "Accessibility Testing",
+    "WCAG", "Contract Testing", "PACT", "Chaos Testing",
+
+    # =========================
+    # NETWORKING / INFRA
+    # =========================
+    "Networking", "TCP", "UDP", "OSI Model", "BGP", "OSPF", "VPN", "Load Balancer", "NGINX", "Apache Web Server",
+    "F5", "Cisco", "Juniper", "LAN", "WAN", "SD-WAN", "DHCP",
+
+    # =========================
+    # PRODUCT MANAGEMENT
+    # =========================
+    "Product Management", "Product Strategy", "Product Roadmap", "Product Discovery", "Market Research",
+    "User Research", "A/B Testing", "Product Analytics", "Business Case Development", "Go-To-Market Strategy",
+    "Product Lifecycle Management",
+
+    # =========================
+    # UI / UX
+    # =========================
+    "Figma", "Adobe XD", "Sketch", "Wireframing", "Prototyping", "User Experience Design", "User Interface Design",
+    "Design Systems", "Usability Testing", "Information Architecture",
+
+    # =========================
+    # ADVANCED JAVA ECOSYSTEM
+    # =========================
+    "Spring Framework", "Spring Core", "Spring Security", "Spring Cloud", "Spring Batch", "Spring Data JPA",
+    "JPA", "Hibernate ORM", "Maven", "Gradle", "JUnit 5", "Microservices Architecture", "Distributed Systems",
+
+    # =========================
+    # CLOUD NATIVE
+    # =========================
+    "OpenShift", "AKS", "EKS", "GKE", "Cloud Native", "Hybrid Cloud", "Multi Cloud", "FinOps", "Disaster Recovery",
+    "Business Continuity", "Platform Engineering",
+
+    # =========================
+    # INDUSTRY DOMAINS
+    # =========================
+    "Banking", "Healthcare", "Insurance", "Telecom", "Retail", "E-Commerce", "FinTech", "EdTech", "Life Sciences",
+    "Pharmaceuticals", "Oil and Gas", "Energy", "Aerospace", "Defense",
+
+    # =========================
+    # ARCHITECTURE & ATS KEYWORDS
+    # =========================
+    "System Design", "High Level Design", "HLD", "Low Level Design", "LLD", "Design Patterns", "SOLID Principles",
+    "Object Oriented Design", "Scalability", "Architecture Design", "Technical Leadership", "Mentoring", "Code Review",
+    "Release Management", "Production Support", "Root Cause Analysis", "Requirement Analysis", "Technical Documentation"
 ]
    
 # =========================
