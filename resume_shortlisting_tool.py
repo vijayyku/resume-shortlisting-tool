@@ -483,7 +483,7 @@ def match_skills(jd_db, resume_text):
        "generative ai",
        "generative artificial intelligence"
        ],
-       API Automation: ["api automation", "API Automation", "API automation", "automation api"], 
+       "API Automation": ["api automation", "API Automation", "API automation", "automation api"], 
        "natural language processing": [
        "nlp",
        "natural language processing"
