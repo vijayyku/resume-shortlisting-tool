@@ -60,7 +60,7 @@ DOMAIN_SKILLS = [
     "selenium", "cypress", "playwright", "puppeteer", "manual testing", "automation testing", "functional testing", "regression testing",
     "smoke testing", "sanity testing", "ui testing", "frontend testing", "cross-browser testing", "cross-device testing", "api testing",
     "postman", "rest assured", "soap ui", "unit testing", "integration testing", "end-to-end testing", "jest", "mocha", "chai", "junit",
-    "testng", "Mockito", "bdd", "cucumber", "gherkin", "pytest", "testng", "test case design", "test execution", "defect tracking",
+    "testng", "Mockito", "bdd", "cucumber", "gherkin", "pytest", "testng", "test case design", "test execution", "defect tracking", "API Automation",
     "performance testing", "load testing", "jmeter", "gatling", 
 
 # APIs & Security
@@ -483,7 +483,7 @@ def match_skills(jd_db, resume_text):
        "generative ai",
        "generative artificial intelligence"
        ],
-
+       API Automation: ["api automation", "API Automation", "API automation", "automation api"], 
        "natural language processing": [
        "nlp",
        "natural language processing"
